@@ -1,4 +1,4 @@
-Com base nos testes fornecidos e na ideia geral do projeto, vou esboçar um esquema de como o programa poderia ser estruturado. Isso inclui os principais componentes, classes, métodos, e como eles interagem entre si.
+# O Programa
 
 ### **1. Estrutura Geral do Programa**
 
