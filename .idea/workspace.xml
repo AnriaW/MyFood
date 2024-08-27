@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/Empresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Pedido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Produto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UsuarioManager.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/facade/MyFoodFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Empresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/UsuarioManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/UsuarioManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
