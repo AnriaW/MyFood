@@ -4,37 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/AtributoInvalidoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/CategoriaInvalidaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/EmpresaNaoEncontradaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/NomeInvalidoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/PedidoNaoEncontradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/ProdutoJaCadastradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/ProdutoNaoEncontradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/UsuarioNaoEncontradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/ValorInvalidoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/EmpresPersistence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/PedidoPersistence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/ProdutoPersistence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/UsuarioPersistence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/services/EmpresaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/services/PedidoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/services/ProdutoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/services/UsuarioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/utils/Formatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/myfood/utils/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyFood.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyFood.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/facade/MyFoodFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/myfood/facade/MyFoodFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/model/Empresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/model/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/model/Pedido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/model/Produto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/model/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/model/UsuarioManager.java" beforeDir="false" />
-    </list>
+    <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
