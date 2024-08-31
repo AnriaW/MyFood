@@ -1,7 +1,5 @@
 package main.facade;
 
-import main.model.UsuarioManager;
-
 public class MyFoodFacade {
     private UsuarioManager usuarioManager;
 
