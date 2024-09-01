@@ -1,10 +1,12 @@
-package main.facade;
+package br.ufal.ic.p2.myfood;
 
-public class MyFoodFacade {
-    private UsuarioManager usuarioManager;
+import br.ufal.ic.p2.myfood.models.UsuarioManager;
 
-    public MyFoodFacade() {
-        usuarioManager = new UsuarioManager();
+public class Facade {
+    private Usuario.UsuarioManager usuarioManager;
+
+    public Facade() {
+        usuarioManager = new Usuario.UsuarioManager(); // Correção da criação da instância
     }
 
     public void zerarSistema() {

@@ -1,4 +1,4 @@
-package br.ufal.myfood.models;
+package br.ufal.ic.p2.myfood.models;
 
 import java.util.ArrayList;
 import java.util.List;

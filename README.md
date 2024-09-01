@@ -1,328 +1,432 @@
-# O Programa
-
-### **1. Estrutura Geral do Programa**
-
-#### **1.1. Pacotes**
-- **`br.ufal.myfood`**: Pacote principal do sistema.
-  - **`models`**: Contém classes de modelo que representam os dados (e.g., `Usuario`, `Empresa`, `Produto`, `Pedido`).
-  - **`services`**: Contém classes de serviço que gerenciam a lógica de negócios (e.g., `UsuarioService`, `EmpresaService`, `ProdutoService`, `PedidoService`).
-  - **`persistence`**: Contém classes responsáveis por persistir dados (e.g., `XMLPersistence`, `DataLoader`, `DataSaver`).
-  - **`facade`**: Contém a classe `MyFoodFacade`, que serve como uma interface simplificada para o usuário.
-  - **`exceptions`**: Contém classes de exceção personalizadas para o sistema (e.g., `UsuarioNaoEncontradoException`, `EmpresaNaoEncontradaException`).
-
----
-
-### **2. Classes Principais**
-
-#### **2.1. Modelo (Models)**
-- **`Usuario`**
-  - Atributos:
-    - `String nome`
-    - `String email`
-    - `String senha`
-    - `String endereco`
-    - `String cpf`
-    - `boolean isDono`
-  - Métodos:
-    - Getters e Setters
-    - Validações
-
-- **`Empresa`**
-  - Atributos:
-    - `int id`
-    - `String nome`
-    - `String endereco`
-    - `String tipoCozinha`
-    - `Usuario dono`
-    - `List<Produto> produtos`
-  - Métodos:
-    - Getters e Setters
-    - Adicionar/Remover Produto
-
-- **`Produto`**
-  - Atributos:
-    - `int id`
-    - `String nome`
-    - `float valor`
-    - `String categoria`
-  - Métodos:
-    - Getters e Setters
-
-- **`Pedido`**
-  - Atributos:
-    - `int numero`
-    - `Usuario cliente`
-    - `Empresa empresa`
-    - `String estado` (e.g., "aberto", "preparando", "fechado")
-    - `List<Produto> produtos`
-  - Métodos:
-    - Getters e Setters
-    - Adicionar/Remover Produto
-    - Calcular Valor Total
-
----
-
-#### **2.2. Serviços (Services)**
-- **`UsuarioService`**
-  - Responsável por:
-    - Criar e gerenciar usuários.
-    - Autenticação e login de usuários.
-    - Validação de dados do usuário.
-
-- **`EmpresaService`**
-  - Responsável por:
-    - Criar e gerenciar empresas.
-    - Associar empresas aos donos.
-    - Gerenciar produtos de uma empresa.
-
-- **`ProdutoService`**
-  - Responsável por:
-    - Criar e editar produtos.
-    - Validar nome e categoria dos produtos.
-
-- **`PedidoService`**
-  - Responsável por:
-    - Criar e gerenciar pedidos.
-    - Adicionar e remover produtos de um pedido.
-    - Fechar pedidos e mudar seu estado.
-
----
-
-#### **2.3. Persistência (Persistence)**
-- **`XMLPersistence`**
-  - Responsável por:
-    - Salvar e carregar dados em arquivos XML.
-    - Garantir a persistência dos dados entre execuções.
-
----
-
-#### **2.4. Fachada (Facade)**
-- **`MyFoodFacade`**
-  - Exponha métodos públicos que encapsulam a lógica do sistema, facilitando a interação do usuário com o sistema.
-  - Métodos como:
-    - `login(String email, String senha)`
-    - `criarUsuario(...)`
-    - `criarEmpresa(...)`
-    - `criarProduto(...)`
-    - `criarPedido(...)`
-    - `fecharPedido(int numero)`
-    - `listarEmpresasDoUsuario(int usuarioId)`
-    - `getNumeroPedido(int clienteId, int empresaId, int indice)`
-
----
-
-### **3. Fluxo de Execução**
-1. **Criação de Usuários**: O usuário se registra no sistema através da fachada, que delega a criação e validação do usuário ao `UsuarioService`.
-   
-2. **Login**: Usuários fazem login e são autenticados pelo `UsuarioService`. A sessão pode ser mantida através de uma referência ao usuário autenticado.
-
-3. **Criação de Empresas**: Um usuário autenticado que é um dono pode criar uma empresa através da fachada, que utiliza o `EmpresaService`.
-
-4. **Gerenciamento de Produtos**: O dono da empresa pode criar, editar e listar produtos de sua empresa, usando o `ProdutoService`.
-
-5. **Criação de Pedidos**: Um cliente pode criar um pedido em uma empresa específica, adicionar produtos ao pedido, e finalmente fechar o pedido. O `PedidoService` gerencia toda essa lógica.
-
-6. **Persistência**: Todos os dados criados e manipulados são persistidos no sistema usando a classe `XMLPersistence`, garantindo que os dados sejam salvos em um formato que pode ser carregado posteriormente.
-
----
-
-### **4. Diagrama de Classes**
-Um diagrama UML ajudaria a visualizar essas relações entre classes e seus métodos/atributos, mas como o ambiente aqui é textual, o esboço acima descreve essas relações de forma estruturada.
-
----
-
-### **5. Considerações Finais**
-Esse esquema cobre os principais componentes e a lógica do sistema. A partir disso, você pode detalhar cada serviço e modelo, bem como implementar as exceções e a lógica de validação necessárias para garantir a integridade dos dados e a segurança do sistema. Se precisar de mais detalhes ou uma revisão em alguma parte específica, é só avisar!
+# User Story 1 - Criação de contas
+# Permita a um usuário criar uma conta no MyFood, O usuário poderá ser de dois tipos, Cliente e Dono de Restaurante.
+#
+# Os dados gerais para os usuários são:
+# id -> Que deve ser do tipo int e único gerado pelo sistema.
+# nome -> Informado na criação do tipo String, pode existir vários usuários com o mesmo nome.
+# email -> Informado na criação do tipo String, deve ser único por usuário.
+# senha -> Informada na criação do tipo String, pode existir vários usuários com a mesma senha.
+#
+# Os usuários do tipo cliente devem além dos dados gerais possuir os seguintes dados:
+# endereco -> o endereço do usuário no tipo String, a qual as entregas são realizadas.
+#
+# Os usuários do tipo Dono de Restaurante devem além dos dados gerais possuir os seguintes dados:
+# endereco -> o endereço do usuário no tipo String, a qual as entregas são realizadas.
+# cpf -> Aceitando uma String que representa o CPF.
+#
+###################
+# Os métodos que são utilizados nos testes podem ser vistos a seguir:
+###################
+# zerarSistema
+# descrição: Apaga todos os dados no banco de dados do sistema.
+# retorno: Sem retorno
+#
+# getAtributoUsuario(int:id, String nome)
+# descrição: Obtém os dados de um usuário.
+# retorno: Uma String com o valor do atributo.
+#
+# criarUsuario(String: nome, String: email, String: senha, String: endereco)
+# descrição: Cria um usuário do tipo cliente.
+# retorno: Sem retorno
+#
+# criarUsuario(String: nome, String: email, String: senha, String: endereco ,String: cpf)
+# descrição:Cria um usuário do tipo dono de restaurante.
+# retorno: Sem retorno
+#
+# login(String: email, String: senha)
+# descrição: Válida se um usuário está devidamente cadastrado e se existe com os dados fornecidos
+# retorno: Retorna o id do usuário.
+#
+# encerrarSistema
+# descrição: Finaliza a execução do programa
+# retorno: Sem retorno
 
 
+# Apaga toda a base de dados.
+zerarSistema
 
-# *Organização*
+expectError "Usuario nao cadastrado." getAtributoUsuario id=9999 atributo="nome"
 
-Claro! Vou esboçar um esquema de pastas para o projeto e listar as classes que devem estar em cada pasta. A estrutura de pastas ajuda a organizar o código e facilita a manutenção e expansão do sistema.
+criarUsuario nome="Carlos" email="carlos@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 123"
 
-### **Estrutura de Pastas e Classes**
+# Se a senha estiver correta, a sessão é aberta e o teste passa sem erros. 
+# Se existir algum erro, o programa vai lançar uma exceção e o EasyAccept vai acusar erro nessa linha.
+id1=login email="carlos@ufal.com.br" senha="123senha"
 
-```
-myfood/
-│
-├── src/
-│   ├── br/
-│   │   ├── ufal/
-│   │   │   ├── myfood/
-│   │   │   │   ├── models/
-│   │   │   │   │   ├── Usuario.java
-│   │   │   │   │   ├── Empresa.java
-│   │   │   │   │   ├── Produto.java
-│   │   │   │   │   ├── Pedido.java
-│   │   │   │   │
-│   │   │   │   ├── services/
-│   │   │   │   │   ├── UsuarioService.java
-│   │   │   │   │   ├── EmpresaService.java
-│   │   │   │   │   ├── ProdutoService.java
-│   │   │   │   │   ├── PedidoService.java
-│   │   │   │   │
-│   │   │   │   ├── persistence/
-│   │   │   │   │   ├── XMLPersistence.java
-│   │   │   │   │   ├── DataLoader.java
-│   │   │   │   │   ├── DataSaver.java
-│   │   │   │   │
-│   │   │   │   ├── facade/
-│   │   │   │   │   ├── MyFoodFacade.java
-│   │   │   │   │
-│   │   │   │   ├── exceptions/
-│   │   │   │   │   ├── UsuarioNaoEncontradoException.java
-│   │   │   │   │   ├── EmpresaNaoEncontradaException.java
-│   │   │   │   │   ├── ProdutoNaoEncontradoException.java
-│   │   │   │   │   ├── PedidoNaoEncontradoException.java
-│   │   │   │   │   ├── ProdutoJaCadastradoException.java
-│   │   │   │   │   ├── ValorInvalidoException.java
-│   │   │   │   │   ├── CategoriaInvalidaException.java
-│   │   │   │   │   ├── NomeInvalidoException.java
-│   │   │   │   │   ├── AtributoInvalidoException.java
-│   │   │   │   │
-│   │   │   │   └── utils/
-│   │   │   │       ├── Validator.java
-│   │   │   │       ├── Formatter.java
-│   │   │   │
-│   │   │   └── resources/
-│   │   │       ├── data/
-│   │   │       │   ├── empresa_data.xml
-│   │   │       │   ├── produto_data.xml
-│   │   │       │   ├── pedido_data.xml
-│   │   │       │   └── usuario_data.xml
-│   │   │       └── config/
-│   │   │           ├── config.properties
-│   │   │           └── logging.properties
-│   │
-└── test/
-    ├── br/
-    │   ├── ufal/
-    │   │   ├── myfood/
-    │   │   │   ├── models/
-    │   │   │   │   ├── UsuarioTest.java
-    │   │   │   │   ├── EmpresaTest.java
-    │   │   │   │   ├── ProdutoTest.java
-    │   │   │   │   └── PedidoTest.java
-    │   │   │   ├── services/
-    │   │   │   │   ├── UsuarioServiceTest.java
-    │   │   │   │   ├── EmpresaServiceTest.java
-    │   │   │   │   ├── ProdutoServiceTest.java
-    │   │   │   │   └── PedidoServiceTest.java
-    │   │   │   ├── persistence/
-    │   │   │   │   ├── XMLPersistenceTest.java
-    │   │   │   │   ├── DataLoaderTest.java
-    │   │   │   │   └── DataSaverTest.java
-    │   │   │   ├── facade/
-    │   │   │   │   └── MyFoodFacadeTest.java
-    │   │   │   └── exceptions/
-    │   │   │       └── ExceptionTest.java
-    │   │   └── utils/
-    │   │       ├── ValidatorTest.java
-    │   │       └── FormatterTest.java
-    └── resources/
-        ├── test_data/
-        │   ├── empresa_data_test.xml
-        │   ├── produto_data_test.xml
-        │   ├── pedido_data_test.xml
-        │   └── usuario_data_test.xml
-        └── test_config/
-            ├── test_config.properties
-            └── test_logging.properties
-```
+###################
+# testes de todas as outras combinações importantes para o comando criarUsuario
+###################
 
-### **Descrição das Pastas e Classes**
+# Cada usuário está associado a um único email.
+expectError "Conta com esse email ja existe" criarUsuario nome="Carlos2" email="carlos@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 123"
 
-#### **1. `src/br/ufal/myfood/`**
+# É possível existir mais usuários com o mesmo nome e endereço, desde que o email seja diferente.
+criarUsuario nome="CarlosDono" email="carlos2@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 321"  cpf="544.732.410-68"
 
-- **`models/`**: Contém as classes que representam os dados principais do sistema.
-  - **`Usuario.java`**: Representa um usuário do sistema.
-  - **`Empresa.java`**: Representa uma empresa (restaurante).
-  - **`Produto.java`**: Representa um produto oferecido por uma empresa.
-  - **`Pedido.java`**: Representa um pedido realizado por um cliente.
+id2=login email="carlos2@ufal.com.br" senha="123senha"
 
-- **`services/`**: Contém a lógica de negócios e as operações principais do sistema.
-  - **`UsuarioService.java`**: Manipula e valida dados de usuários.
-  - **`EmpresaService.java`**: Manipula e valida dados de empresas e seus produtos.
-  - **`ProdutoService.java`**: Manipula e valida dados de produtos.
-  - **`PedidoService.java`**: Manipula e valida pedidos e seus produtos.
+expect "Carlos" getAtributoUsuario id=${id1} atributo="nome"
+expect "carlos@ufal.com.br" getAtributoUsuario id=${id1} atributo="email"
+expect "Rua Exemplo N 123" getAtributoUsuario id=${id1} atributo="endereco" 
 
-- **`persistence/`**: Contém a lógica de persistência de dados.
-  - **`XMLPersistence.java`**: Responsável por salvar e carregar dados em XML.
-  - **`DataLoader.java`**: Carrega dados de arquivos XML.
-  - **`DataSaver.java`**: Salva dados em arquivos XML.
+expect "CarlosDono" getAtributoUsuario id=${id2} atributo="nome"
+expect "carlos2@ufal.com.br" getAtributoUsuario id=${id2} atributo="email"
+expect "544.732.410-68" getAtributoUsuario id=${id2} atributo="cpf"
 
-- **`facade/`**: Fornece uma interface simplificada para interagir com o sistema.
-  - **`MyFoodFacade.java`**: Encapsula a lógica do sistema e expõe métodos para usuários e clientes interagirem com o sistema.
+# Deve aceitar apenas se tiver 14 caracteres para CPF
+expectError "CPF invalido" criarUsuario nome="CarlosDono" email="carlos2@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 321" cpf="7300.65200.198/0001-61"
+expectError "CPF invalido" criarUsuario nome="CarlosDono" email="carlos2@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 321" cpf="544.732.4"
 
-- **`exceptions/`**: Contém exceções personalizadas para o sistema.
-  - **`UsuarioNaoEncontradoException.java`**: Exceção para usuário não encontrado.
-  - **`EmpresaNaoEncontradaException.java`**: Exceção para empresa não encontrada.
-  - **`ProdutoNaoEncontradoException.java`**: Exceção para produto não encontrado.
-  - **`PedidoNaoEncontradoException.java`**: Exceção para pedido não encontrado.
-  - **`ProdutoJaCadastradoException.java`**: Exceção para produto já cadastrado.
-  - **`ValorInvalidoException.java`**: Exceção para valor inválido.
-  - **`CategoriaInvalidaException.java`**: Exceção para categoria inválida.
-  - **`NomeInvalidoException.java`**: Exceção para nome inválido.
-  - **`AtributoInvalidoException.java`**: Exceção para atributo inválido.
+# Validando dados ao criar o usuário.
+expectError "Nome invalido" criarUsuario nome=  email="carlos@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 123"
+expectError "Nome invalido" criarUsuario nome=""  email="carlos@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 123"
 
-- **`utils/`**: Contém utilitários e helpers para o sistema.
-  - **`Validator.java`**: Contém métodos para validação de dados.
-  - **`Formatter.java`**: Contém métodos para formatação de dados.
+expectError "Email invalido" criarUsuario nome="Carlos" email=  senha="123senha" endereco="Rua Exemplo N 123"
+expectError "Email invalido" criarUsuario nome="Carlos" email=""  senha="123senha" endereco="Rua Exemplo N 123"
 
-#### **2. `resources/`**
+expectError "Senha invalido" criarUsuario nome="Carlos" email="carlos@ufal.com.br" senha=  endereco="Rua Exemplo N 123"
+expectError "Senha invalido" criarUsuario nome="Carlos" email="carlos@ufal.com.br" senha=""  endereco="Rua Exemplo N 123"
 
-- **`data/`**: Contém arquivos XML para persistência dos dados.
-  - **`empresa_data.xml`**: Dados das empresas.
-  - **`produto_data.xml`**: Dados dos produtos.
-  - **`pedido_data.xml`**: Dados dos pedidos.
-  - **`usuario_data.xml`**: Dados dos usuários.
+expectError "Endereco invalido" criarUsuario nome="Carlos" email="carlos@ufal.com.br" senha="123senha" endereco=  
+expectError "Endereco invalido" criarUsuario nome="Carlos" email="carlos@ufal.com.br" senha="123senha" endereco=""  
 
-- **`config/`**: Contém arquivos de configuração.
-  - **`config.properties`**: Configurações gerais do sistema.
-  - **`logging.properties`**: Configurações de logging.
+expectError "CPF invalido" criarUsuario nome="CarlosDono" email="carlos2@ufal.com.br" senha="123senha", endereco="Rua Exemplo N 123" cpf=  
+expectError "CPF invalido" criarUsuario nome="CarlosDono" email="carlos2@ufal.com.br" senha="123senha", endereco="Rua Exemplo N 123" cpf=""  
 
-#### **3. `test/`**
+expectError "Endereco invalido" criarUsuario nome="CarlosDono" email="carlos2@ufal.com.br" senha="123senha" endereco="" cpf="544.732.410-68"
 
-- **`br/ufal/myfood/`**: Contém testes para o sistema, estruturado de maneira semelhante ao diretório `src`.
 
-  - **`models/`**: Testes para classes de modelo.
-    - **`UsuarioTest.java`**: Testes para a classe `Usuario`.
-    - **`EmpresaTest.java`**: Testes para a classe `Empresa`.
-    - **`ProdutoTest.java`**: Testes para a classe `Produto`.
-    - **`PedidoTest.java`**: Testes para a classe `Pedido`.
+# Valida se o email esta no formato correto.
+expectError "Email invalido" criarUsuario nome="CarlosDono" email="carlos2" senha="123senha" endereco="Rua Exemplo N 321" cpf="544.732.410-68"
+
+###################
+# testes de todas as outras combinações importantes para o comando login
+###################
+expectError "Login ou senha invalidos" login email="carlos@ufal.com.br" senha="abc"
+expectError "Login ou senha invalidos" login email="abc" senha="abc"
+expectError "Login ou senha invalidos" login email=  senha="abc"
+expectError "Login ou senha invalidos" login email="carlos@ufal.com.br" senha=  
+
+encerrarSistema
+quit
+
+
+# User Story 1 - Criação de contas - verificacao de persistencia
+
+id1=login email="carlos@ufal.com.br" senha="123senha"
+id2=login email="carlos2@ufal.com.br" senha="123senha"
+
+expect "Carlos" getAtributoUsuario id=${id1} atributo="nome"
+expect "carlos@ufal.com.br" getAtributoUsuario id=${id1} atributo="email"
+expect "123senha" getAtributoUsuario id=${id1} atributo="senha"
+expect "Rua Exemplo N 123" getAtributoUsuario id=${id1} atributo="endereco"
+
+expect "CarlosDono" getAtributoUsuario id=${id2} atributo="nome"
+expect "carlos2@ufal.com.br" getAtributoUsuario id=${id2} atributo="email"
+expect "123senha" getAtributoUsuario id=${id2} atributo="senha"
+expect "544.732.410-68" getAtributoUsuario id=${id2} atributo="cpf"
+
+
+encerrarSistema
+quit
+
+# User Story 2 - Criação de Restaurantes
+# Permita que um usuário do tipo dono de empresa crie seu restaurante, mercado ou farmacia no MyFood.
+#
+# Os dados gerais para os restaurantes são:
+# id -> Que deve ser do tipo int e único gerado pelo sistema.
+# nome -> Informado na criação do tipo String, não pode existir vários restaurantes com o mesmo nome com donos diferentes.
+# endereco-> Informado na criação do tipo String, pode existir vários restaurantes com o mesmo endereço.
+# tipoCozinha-> Informada na criação do tipo String, pode existir vários restaurantes com o mesmo tipo.
+#
+###################
+# Os métodos que são utilizados nos testes podem ser vistos a seguir:
+###################
+# zerarSistema
+# descrição: Apaga todos os dados no banco de dados do sistema.
+# retorno: Sem retorno
+#
+# criarEmpresa(String: tipoEmpresa, int dono, String: nome, String endereco, String tipoCozinha)
+# descrição: Cria uma nova empresa, do tipo fornecido, no momento apenas Restaurantes são criados.
+# retorno:   Retorna o id da empresa
+#
+# getEmpresasDoUsuario (int idDono)
+# descrição: Verifica todas as empresas às quais o usuário é dono.
+# retorno:   Retorna uma string contendo os nomes e endereços de todas as empresas.
+#
+# getIdEmpresa (int idDono, String nome, int indice)
+# descrição: Verifica uma empresa a qual esteja na lista do dono.
+# retorno:   Retorna o id da empresa com indice informado.
+#
+# getAtributoEmpresa (int empresa, String atributo)
+# descrição: Obtém os dados dos atributos da empresa
+# retorno:  Retorna uma string com o valor do atributo.
+#
+# encerrarSistema
+# descrição: Finaliza a execução do programa
+# retorno: Sem retorno
 
 
 
-  - **`services/`**: Testes para serviços.
-    - **`UsuarioServiceTest.java`**: Testes para o `UsuarioService`.
-    - **`EmpresaServiceTest.java`**: Testes para o `EmpresaService`.
-    - **`ProdutoServiceTest.java`**: Testes para o `ProdutoService`.
-    - **`PedidoServiceTest.java`**: Testes para o `PedidoService`.
+# Apaga toda a base de dados.
+zerarSistema
 
-  - **`persistence/`**: Testes para a persistência de dados.
-    - **`XMLPersistenceTest.java`**: Testes para `XMLPersistence`.
-    - **`DataLoaderTest.java`**: Testes para `DataLoader`.
-    - **`DataSaverTest.java`**: Testes para `DataSaver`.
+criarUsuario nome="Lucas" email="lucas@ufal.com.br"  senha="123senha" endereco="Rua Exemplo N 321"
 
-  - **`facade/`**: Testes para a fachada.
-    - **`MyFoodFacadeTest.java`**: Testes para `MyFoodFacade`.
+criarUsuario nome="CarlosDono" email="carlos@ufal.com.br"  senha="123senha" endereco="Rua Exemplo N 321" cpf="544.732.410-68"
 
-  - **`exceptions/`**: Testes para exceções personalizadas.
-    - **`ExceptionTest.java`**: Testes para exceções.
+criarUsuario nome="RobertoDono" email="roberto@ufal.com.br" senha="123senha" endereco="Rua Exemplo N 321" cpf="544.732.410-68"
 
-  - **`utils/`**: Testes para utilitários.
-    - **`ValidatorTest.java`**: Testes para `Validator`.
-    - **`FormatterTest.java`**: Testes para `Formatter`.
+id1=login email="lucas@ufal.com.br" senha="123senha"
+id2=login email="carlos@ufal.com.br" senha="123senha"
+id3=login email="roberto@ufal.com.br" senha="123senha"
 
-- **`resources/`**: Contém dados de teste e configurações.
-  - **`test_data/`**: Dados de teste em XML.
-    - **`empresa_data_test.xml`**: Dados de teste para empresas.
-    - **`produto_data_test.xml`**: Dados de teste para produtos.
-    - **`pedido_data_test.xml`**: Dados de teste para pedidos.
-    - **`usuario_data_test.xml`**: Dados de teste para usuários.
+###################
+# testes de todas as outras combinações importantes para o comando criarEmpresa
+###################
 
-  - **`test_config/`**: Configurações de teste.
-    - **`test_config.properties`**: Configurações de teste.
-    - **`test_logging.properties`**: Configurações de logging para testes.
+eid1=criarEmpresa tipoEmpresa="restaurante"  dono=${id2} nome="Pastelaria do Carlos" endereco="Rua Segura N 987" tipoCozinha="brasileira"
 
-Esse esquema deve fornecer uma estrutura clara para o desenvolvimento e a organização do seu projeto. Se precisar de mais detalhes ou ajustes, é só avisar!
+eid2=criarEmpresa tipoEmpresa="restaurante"  dono=${id2} nome="Sushi do Carlos" endereco="Rua Legal N 654" tipoCozinha="japonesa"
+
+
+# Um dono diferente não pode cadastrar uma empresa com o mesmo nome de uma existente, o dono de um restaurante pode cadastrar uma nova empresa desde que seja em endereço diferente.
+
+expectError "Empresa com esse nome ja existe" criarEmpresa tipoEmpresa="restaurante"  dono=${id3} nome="Pastelaria do Carlos" endereco="Rua Segura N 987" tipoCozinha="brasileira"
+
+expectError "Proibido cadastrar duas empresas com o mesmo nome e local" criarEmpresa tipoEmpresa="restaurante"  dono=${id2} nome="Pastelaria do Carlos" endereco="Rua Segura N 987" tipoCozinha="brasileira"
+
+eid4=criarEmpresa tipoEmpresa="restaurante"  dono=${id2} nome="Pastelaria do Carlos" endereco="Rua Divertida N 1973" tipoCozinha="brasileira"
+
+# Apenas usuários do tipo dono de restaurante podem criar uma empresa.
+expectError "Usuario nao pode criar uma empresa" criarEmpresa tipoEmpresa="restaurante"  dono=${id1} nome="Restaurante do Lucas" endereco="Rua Amigavel N 22" tipoCozinha="brasileira"
+
+# Obtendo donos
+expectError "Usuario nao pode criar uma empresa" getEmpresasDoUsuario idDono=${id1}
+expect "{[[Pastelaria do Carlos, Rua Segura N 987], [Sushi do Carlos, Rua Legal N 654], [Pastelaria do Carlos, Rua Divertida N 1973]]}" getEmpresasDoUsuario idDono=${id2}
+expect "{[]}" getEmpresasDoUsuario idDono=${id3}
+
+# Obtendo os dados dos restaurantes. 
+eid3=criarEmpresa tipoEmpresa="restaurante"  dono=${id3} nome="Sorveteria do Roberto" endereco="Rua Segura N 987" tipoCozinha="brasileira"
+
+expect "Sorveteria do Roberto" getAtributoEmpresa empresa=${eid3} atributo="nome"
+expect "Rua Segura N 987" getAtributoEmpresa empresa=${eid3} atributo="endereco"
+expect "brasileira" getAtributoEmpresa empresa=${eid3} atributo="tipoCozinha"
+expect "RobertoDono" getAtributoEmpresa empresa=${eid3} atributo="dono"
+expectError "Atributo invalido" getAtributoEmpresa empresa=${eid3} atributo="vizinhos"
+expectError "Atributo invalido" getAtributoEmpresa empresa=${eid3} atributo=""
+expectError "Empresa nao cadastrada" getAtributoEmpresa empresa=9999 atributo="nome"
+expectError "Empresa nao cadastrada" getAtributoEmpresa empresa=9999 atributo=""
+expect "Atributo invalido" getAtributoEmpresa empresa=${eid3} atributo=  
+
+# Obtendo o index de uma empresa. 
+
+expect ${eid1} getIdEmpresa idDono=${id2} nome="Pastelaria do Carlos" indice=0
+expect ${eid4} getIdEmpresa idDono=${id2} nome="Pastelaria do Carlos" indice=1
+expect ${eid2} getIdEmpresa idDono=${id2} nome="Sushi do Carlos" indice=0
+expectError "Indice maior que o esperado" getIdEmpresa idDono=${id2} nome="Pastelaria do Carlos" indice=2
+expectError "Nao existe empresa com esse nome" getIdEmpresa idDono=${id2} nome="Sorveteria do Carlos" indice=0
+
+expectError "Nome invalido" getIdEmpresa idDono=${id2} nome=  indice=2
+expectError "Nome invalido" getIdEmpresa idDono=${id2} nome=""  indice=2
+expectError "Indice invalido" getIdEmpresa idDono=${id2} nome="Pastelaria do Carlos" indice=-1
+
+
+
+encerrarSistema
+quit
+
+# User Story 2 - Criação de Restaurantes - verificacao de persistencia
+
+id1=login email="lucas@ufal.com.br" senha="123senha"
+id2=login email="carlos@ufal.com.br" senha="123senha"
+id3=login email="roberto@ufal.com.br" senha="123senha"
+
+e1=getIdEmpresa idDono=${id3} nome="Sorveteria do Roberto" indice=0
+
+expect "Sorveteria do Roberto" getAtributoEmpresa empresa=${e1} atributo="nome"
+expect "Rua Segura N 987" getAtributoEmpresa empresa=${e1} atributo="endereco"
+expect "brasileira" getAtributoEmpresa empresa=${e1} atributo="tipoCozinha"
+expect "RobertoDono" getAtributoEmpresa empresa=${e1} atributo="dono"
+expectError"Atributo invalido" getAtributoEmpresa empresa=${e1} atributo="vizinhos"
+
+expectError "usuario nao pode criar uma empresa" getEmpresasDoUsuario idDono=${id1}
+expect "{[[Pastelaria do Carlos, Rua Segura N 987], [Sushi do Carlos, Rua Legal N 654 ], [Pastelaria do Carlos, Rua Divertida N 1973]]}" getEmpresasDoUsuario idDono=${id2}
+expect "{[]}" getEmpresasDoUsuario idDono=${id3}
+
+encerrarSistema
+quit
+
+# User Story 3 - Criação de Produtos 
+# Permita que um usuário do tipo dono de restaurante crie produtos para sua empresa. 
+#
+# Os dados gerais para os restaurantes são:
+# id -> Que deve ser do tipo int e único gerado pelo sistema.
+# nome -> Informado na criação do tipo String, o mesmo produto não pode ter o mesmo nome cadastrado no mesmo restaurante. 
+# valor-> Informado na criação do tipo float, pode existir vários produtos com o mesmo valor.
+# categoria-> Informada na criação do tipo String, pode existir vários restaurantes com a mesma categoria..
+#
+###################
+# Os métodos que são utilizados nos testes podem ser vistos a seguir:
+###################
+# zerarSistema
+# descrição: Apaga todos os dados no banco de dados do sistema.
+# retorno: Sem retorno
+#
+# criarProduto(int: empresa, String: nome, float valor, String categoria)
+# descrição: Cria um novo produto para uma determinada empresa.
+# retorno:  Retorna o id do produto
+#
+# editarProduto(int: produto, String: nome, float valor, String categoria)
+# descrição: Modifica os valores de um produto com id informado
+# retorno:  Sem retorno
+#
+# getProduto(String  nome, int empresa, String atributo)
+# descrição:  obtém os dados de um produto pelo id
+# retorno:  retorna uma string com o valor do atributo.
+#
+# listarProdutos(int empresa)
+# descrição:  obtém o nome de todos os produtos de uma empresa.
+# retorno: retorna uma string contendo os nomes de todos os produtos existentes para aquela empresa.
+#
+# encerrarSistema
+# descrição: Finaliza a execução do programa
+# retorno: Sem retorno
+
+
+# Apaga toda a base de dados.
+zerarSistema
+
+criarUsuario nome="RobertoDono" email="roberto@ufal.com.br"  senha="123senha" endereco="Rua Exemplo N 321" cpf="544.732.410-68"
+
+id1=login email="roberto@ufal.com.br" senha="123senha"
+
+eid1=criarEmpresa tipoEmpresa="restaurante"  dono=${id1} nome="Sorveteria do Roberto" endereco="Rua Segura N 987" tipoCozinha="brasileira"
+
+eid2=criarEmpresa tipoEmpresa="restaurante"  dono=${id1} nome="Pastelaria do Roberto" endereco="Rua Segura N 987" tipoCozinha="brasileira"
+
+eid3=criarEmpresa tipoEmpresa="restaurante"  dono=${id1} nome="Churrascaria do Roberto" endereco="Rua Segura N 987" tipoCozinha="brasileira"
+
+
+###################
+# testes de todas as outras combinações importantes para o comando criarProduto
+###################
+
+p1=criarProduto empresa=${eid1} nome="Sorvete morango" valor=1.40  categoria="alimento"
+
+p2=criarProduto empresa=${eid1} nome="Refrigerante" valor=3.00  categoria="bebida"
+
+expectError "Ja existe um produto com esse nome para essa empresa" criarProduto empresa=${eid1} nome="Refrigerante" valor=3.00  categoria="bebida"
+
+p3=criarProduto empresa=${eid2} nome="Refrigerante" valor=3.00  categoria="bebida"
+
+expectError "Nome invalido" criarProduto empresa=${eid2} nome=  valor=3.00  categoria="bebida"
+expectError "Nome invalido" criarProduto empresa=${eid2} nome=""  valor=3.00  categoria="bebida"
+expectError "Valor invalido" criarProduto empresa=${eid2} nome="Refrigerante" valor=-3.00  categoria="bebida"
+expectError "Categoria invalido" criarProduto empresa=${eid2} nome="Refrigerante" valor=3.00  categoria=  
+expectError "Categoria invalido" criarProduto empresa=${eid2} nome="Refrigerante" valor=3.00  categoria=""
+
+
+###################
+# testes de todas as combinações importantes para o comando editarProduto
+###################
+
+expectError "Nome invalido" editarProduto produto=${p3} nome=  valor=3.00  categoria="bebida"
+expectError "Nome invalido" editarProduto produto=${p3} nome=""  valor=3.00  categoria="bebida"
+expectError "Valor invalido" editarProduto produto=${p3} nome="Refrigerante" valor=-3.00  categoria="bebida"
+expectError "Categoria invalido" editarProduto produto=${p3} nome="Refrigerante" valor=3.00  categoria=  
+expectError "Categoria invalido" editarProduto produto=${p3} nome="Refrigerante" valor=3.00  categoria="" 
+
+expectError "Produto nao cadastrado" editarProduto produto=9999 nome="Refrigerante" valor=3.00  categoria="bebida"
+
+editarProduto produto=${p3} nome="Refrigerante de laranja" valor=4.40  categoria="bebida"
+
+###################
+# testes de todas as combinações importantes para o comando getProduto
+###################
+
+expect "4.40" getProduto nome="Refrigerante de laranja" empresa=${eid2} atributo="valor"
+expect "bebida" getProduto nome="Refrigerante de laranja" empresa=${eid2} atributo="categoria"
+expect "Pastelaria do Roberto" getProduto nome="Refrigerante de laranja" empresa=${eid2} atributo="empresa"
+
+expectError "Produto nao encontrado" getProduto nome="Pastel" empresa=${eid2} atributo="valor"
+expectError "Atributo nao existe" getProduto nome="Refrigerante de laranja" empresa=${eid2} atributo="desconto"
+
+###################
+# testes para listar os produtos da empresa.
+###################
+
+expect "{[Refrigerante de laranja]}" listarProdutos empresa=${eid2}
+expect "{[Sorvete morango, Refrigerante]}" listarProdutos empresa=${eid1}
+expect "{[]}" listarProdutos empresa=${eid3}
+
+expectError "Empresa nao encontrada" listarProdutos empresa=9999
+
+encerrarSistema
+quit
+
+
+# User Story 3 - Criação de Produtos  - verificacao de persistencia
+
+id1=login email="roberto@ufal.com.br" senha="123senha"
+
+
+e1=getIdEmpresa idDono=${id1} nome="Sorveteria do Roberto" indice=0
+e2=getIdEmpresa idDono=${id1} nome="Pastelaria do Roberto" indice=0
+e3=getIdEmpresa idDono=${id1} nome="Churrascaria do Roberto" indice=0
+
+expect "4.40" getProduto nome="Refrigerante de laranja" empresa=${e2} atributo="valor"
+expect "bebida" getProduto nome="Refrigerante de laranja" empresa=${e2} atributo="categoria"
+expect "Pastelaria do Roberto" getProduto nome="Refrigerante de laranja" empresa=${e2} atributo="empresa"
+
+expect "{[Refrigerante de laranja]}" listarProdutos empresa=${e2}
+expect "{[Sorvete morango, Refrigerante]}" listarProdutos empresa=${e1}
+expect "{[]}" listarProdutos empresa=${e3}
+
+encerrarSistema
+quit
+
+# User Story 3 - Criação de Produtos  - verificacao de persistencia
+
+id1=login email="roberto@ufal.com.br" senha="123senha"
+
+
+e1=getIdEmpresa idDono=${id1} nome="Sorveteria do Roberto" indice=0
+e2=getIdEmpresa idDono=${id1} nome="Pastelaria do Roberto" indice=0
+e3=getIdEmpresa idDono=${id1} nome="Churrascaria do Roberto" indice=0
+
+expect "4.40" getProduto nome="Refrigerante de laranja" empresa=${e2} atributo="valor"
+expect "bebida" getProduto nome="Refrigerante de laranja" empresa=${e2} atributo="categoria"
+expect "Pastelaria do Roberto" getProduto nome="Refrigerante de laranja" empresa=${e2} atributo="empresa"
+
+expect "{[Refrigerante de laranja]}" listarProdutos empresa=${e2}
+expect "{[Sorvete morango, Refrigerante]}" listarProdutos empresa=${e1}
+expect "{[]}" listarProdutos empresa=${e3}
+
+encerrarSistema
+quit
+
+
+# User Story 4 - Criação de Pedidos  - verificacao de persistencia
+
+id1=login email="roberto@ufal.com.br" senha="123senha"
+id2=login email="carlos@ufal.com.br" senha="123senha"
+
+e1=getIdEmpresa idDono=${id1} nome="Sorveteria do Roberto" indice=0
+e2=getIdEmpresa idDono=${id1} nome="Pastelaria do Roberto" indice=0
+
+pe1=getNumeroPedido cliente=${id2} empresa=${e1} indice=0
+pe2=getNumeroPedido cliente=${id2} empresa=${e2} indice=0
+expect ${pe2} getNumeroPedido cliente=${id2} empresa=${e2} indice=0
+
+expect "Carlos"  getPedidos pedido=${pe1} atributo="cliente"
+expect "Sorveteria do Roberto"  getPedidos pedido=${pe1} atributo="empresa"
+expect "preparando"  getPedidos pedido=${pe1} atributo="estado"
+expect "{Sorvete morango, Sorvete chocolate, Refrigerante}" getPedidos pedido=${pe1} atributo="produtos"
+expect "6.20"  getPedidos pedido=${pe1} atributo="valor"
+
+expect "Carlos"  getPedidos pedido=${pe2} atributo="cliente"
+expect "Pastelaria do Roberto"  getPedidos pedido=${pe2} atributo="empresa"
+expect "aberto"  getPedidos pedido=${pe2} atributo="estado"
+expect "{Pastel de queijo, Pastel de queijo}" getPedidos pedido=${pe2} atributo="produtos"
+expect "10.00"  getPedidos pedido=${pe2} atributo="valor"

@@ -1,7 +1,7 @@
-package br.ufal.myfood.services;
+package br.ufal.ic.p2.myfood.services;
 
-import br.ufal.myfood.models.Empresa;
-import br.ufal.myfood.models.Produto;
+import br.ufal.ic.p2.myfood.models.Empresa;
+import br.ufal.ic.p2.myfood.models.Produto;
 
 import java.util.HashMap;
 import java.util.Map;

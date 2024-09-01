@@ -1,9 +1,9 @@
-package br.ufal.myfood.services;
+package br.ufal.ic.p2.myfood.services;
 
-import br.ufal.myfood.models.Empresa;
-import br.ufal.myfood.models.Pedido;
-import br.ufal.myfood.models.Produto;
-import br.ufal.myfood.models.Usuario;
+import br.ufal.ic.p2.myfood.models.Empresa;
+import br.ufal.ic.p2.myfood.models.Pedido;
+import br.ufal.ic.p2.myfood.models.Produto;
+import br.ufal.ic.p2.myfood.models.Usuario;
 
 import java.util.ArrayList;
 import java.util.HashMap;

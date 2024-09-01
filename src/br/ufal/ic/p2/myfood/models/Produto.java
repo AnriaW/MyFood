@@ -1,10 +1,11 @@
-package br.ufal.myfood.models;
+package br.ufal.ic.p2.myfood.models;
 
 public class Produto {
     private String nome;
     private double valor;
     private String categoria;
     private Empresa empresa;
+    private int id;
 
     public Produto(String nome, double valor, String categoria, Empresa empresa) {
         this.nome = nome;
@@ -44,5 +45,13 @@ public class Produto {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

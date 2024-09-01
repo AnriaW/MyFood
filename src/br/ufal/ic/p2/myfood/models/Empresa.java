@@ -1,4 +1,4 @@
-package br.ufal.myfood.models;
+package br.ufal.ic.p2.myfood.models;
 
 public class Empresa {
     private String nome;
@@ -6,6 +6,7 @@ public class Empresa {
     private String tipoCozinha;
     private String tipoEmpresa;
     private Usuario dono;
+    private int id;
 
     public Empresa(String nome, String endereco, String tipoCozinha, String tipoEmpresa, Usuario dono) {
         this.nome = nome;
@@ -54,5 +55,9 @@ public class Empresa {
 
     public void setDono(Usuario dono) {
         this.dono = dono;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

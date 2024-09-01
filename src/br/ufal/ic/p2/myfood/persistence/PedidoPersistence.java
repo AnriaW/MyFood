@@ -1,6 +1,6 @@
-package br.ufal.myfood.persistence;
+package br.ufal.ic.p2.myfood.persistence;
 
-import br.ufal.myfood.models.Pedido;
+import br.ufal.ic.p2.myfood.models.Pedido;
 
 import java.util.HashMap;
 import java.util.Map;
