@@ -5,33 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Facade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Gerenciamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/AtributoInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/CPFInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmailInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmailJaCadastradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmpresaJaExisteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmpresaNaoCadastradaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EnderecoInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/IndiceInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/LoginOuSenhaInvalidosException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/NomeInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/SenhaInvalidaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/TipoEmpresaInvalidoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoCadastradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoEncontradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoPodeCriarEmpresaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/DonoRestaurante.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Empresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Produto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Restaurante.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaEmpresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaPedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaUsuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/UsuarioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/servico/EmpresaServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/servico/PedidoServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/servico/ProdutoServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/servico/UsuarioServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/Validador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/AtributoInvalidoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/CategoriaInvalidaException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/EmpresaNaoEncontradaException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/NomeInvalidoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/PedidoNaoEncontradoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/ProdutoJaCadastradoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/ProdutoNaoEncontradoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/UsuarioNaoEncontradoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/exceptions/ValorInvalidoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/facade/MyFoodFacade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/models/Empresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/models/Pedido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/models/Produto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/models/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/EmpresPersistence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/PedidoPersistence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/ProdutoPersistence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/persistence/UsuarioPersistence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/services/EmpresaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/services/PedidoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/services/ProdutoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/services/UsuarioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/utils/Formatter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/myfood/utils/Validator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/MyFoodFacade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/AtributoInvalidoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/CategoriaInvalidaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/EmpresaNaoEncontradaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/NomeInvalidoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/PedidoNaoEncontradoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/ProdutoJaCadastradoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/ProdutoNaoEncontradoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/UsuarioNaoEncontradoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/exceptions/ValorInvalidoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/models/Empresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/models/Pedido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/models/Produto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/models/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistence/EmpresaPersistence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistence/PedidoPersistence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistence/ProdutoPersistence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistence/UsuarioPersistence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/services/EmpresaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/services/PedidoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/services/ProdutoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/Formatter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/Validator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +73,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -62,16 +95,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anton/OneDrive/Área de Trabalho/Myfood_P2-master",
-    "onboarding.tips.debug.path": "C:/Users/Anton/OneDrive/Área de Trabalho/MyFood/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anton/OneDrive/Área de Trabalho/Myfood_P2-master&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Anton/OneDrive/Área de Trabalho/MyFood/src/Main.java&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="br.ufal.ic.p2.myfood.excessoes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anton\OneDrive\Área de Trabalho\MyFood\src\br\ufal\ic\p2\myfood" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
