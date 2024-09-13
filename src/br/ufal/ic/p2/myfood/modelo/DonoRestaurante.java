@@ -1,7 +1,7 @@
 package br.ufal.ic.p2.myfood.modelo;
 
 public class DonoRestaurante extends Usuario {
-    private final String cpf = null;
+    private String cpf = null;
 
     public DonoRestaurante(int proximoIdUsuario, String nome, String email, String senha, String endereco) {
         super(proximoIdUsuario++, nome, email, senha, endereco);

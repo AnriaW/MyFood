@@ -21,7 +21,7 @@ public class Facade {
         return gerenciamento.criarProduto(empresaId, nome, valor, categoria);
     }
 
-    public void editarProduto(int id, String nome, float valor, String categoria) throws Exception {
+    public void editarProduto(int id, String nome, String valor, String categoria) throws Exception {
         try {
             gerenciamento.editarProduto(id, nome, valor, categoria);
         } catch (Exception e) {
@@ -29,12 +29,12 @@ public class Facade {
         }
     }
 
-    public String getProduto(String nome, int empresaId, String atributo) {
+    public String getProduto(String nome, int empresaId, String atributo) throws Exception {
         return gerenciamento.getProduto(nome, empresaId, atributo);
     }
 
     public String listarProdutos(int empresaId) throws Exception {
-        return gerenciamento.listarProdutos(empresaId);
+       return gerenciamento.listarProdutos(empresaId).toString();
     }
 
     public void criarUsuario(String nome, String email, String senha, String endereco) throws Exception {
@@ -61,11 +61,11 @@ public class Facade {
         return gerenciamento.getAtributoEmpresa(id, atributo);
     }
 
-    public void criarPedido(int clienteId, int empresaId) {
+    public void criarPedido(int clienteId, int empresaId) throws Exception {
         gerenciamento.criarPedido(clienteId, empresaId);
     }
 
-    public void adicionarProduto(int pedidoNumero, int produtoId) {
+    public void adicionarProduto(int pedidoNumero, int produtoId) throws Exception {
         gerenciamento.adicionarProduto(pedidoNumero, produtoId);
     }
 

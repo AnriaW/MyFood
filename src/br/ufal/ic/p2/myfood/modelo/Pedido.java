@@ -9,14 +9,14 @@ public class Pedido {
     private String cliente;
     private String empresa;
     private String estado;
-    private List<String> produtos;
+    private List<Produto> produtos;
     private double valor;
 
-    public Pedido(Usuario cliente, Empresa empresa) {
+    public Pedido(String cliente, String empresa) {
         this.numero = contador++;
         this.cliente = cliente;
         this.empresa = empresa;
-        this.estado = "aberto"; // Estado inicial do pedido
+        this.estado = "Aberto"; // Estado inicial do pedido
         this.produtos = new ArrayList<>();
         this.valor = 0.0;
     }
@@ -26,19 +26,37 @@ public class Pedido {
     public String getCliente() { return cliente; }
     public String getEmpresa() { return empresa; }
     public String getEstado() { return estado; }
-    public List<String> getProdutos() { return produtos; }
+    public void setEstado() { this.estado = estado; }
+    public List<Produto> getProdutos() { return produtos; }
     public double getValor() { return valor; }
-
     public void setEstado(String estado) { this.estado = estado; }
 
-    public void adicionarProduto(String produto, double preco) {
+    // TODO: tratar o preço
+    // opções
+    // int valor = 440/100;
+    // Decimal valor = 4.40;
+    public void adicionarProduto(Produto produto) throws Exception {
+        if(estado.equals("Preparando")) {
+            throw new Exception("Nao se pode adicionar ao pedido fechado");
+        }
+
         produtos.add(produto);
-        valor += preco;
+//        valor += preco;
     }
 
-    public void removerProduto(String produto) {
+    // TODO: tratamento de valor, mesma coisa citada no método acima
+    public void removerProduto(String produto) throws Exception {
+        if(estado.equals("Preparando")) {
+            throw new Exception("Nao se pode remover do pedido fechado");
+        }
+
         if (produtos.remove(produto)) {
             valor -= valor;
         }
     }
+
+    public void fechar() {
+        this.estado = "Preparando";
+    }
+
 }

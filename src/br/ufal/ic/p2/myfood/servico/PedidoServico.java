@@ -14,7 +14,7 @@ public class PedidoServico {
         this.persistenciaPedido = new PersistenciaPedido();
     }
 
-    public Pedido criarPedido(Usuario cliente, Empresa empresa) {
+    public Pedido criarPedido(String cliente, String empresa) {
         Pedido pedido = new Pedido(cliente, empresa);
         persistenciaPedido.salvarPedido(pedido);
         return pedido;

@@ -78,12 +78,12 @@ public class Gerenciamento {
     public String getAtributoUsuario(int id, String nome) throws Exception {
         Usuario usuario = usuarios.get(id);
         if (usuario == null) throw new Exception("Usuário não encontrado.");
-        return usuario.getNome(nome);
+        return usuario.getNome();
     }
 
     // Criar empresa
     public void criarEmpresa(String nome, String endereco) throws Exception {
-        Usuario dono = usuarios.get(donoId);
+        Usuario dono = usuarios.getId();
         if (dono == null) throw new Exception("Dono não encontrado.");
         Empresa empresa = new Empresa(proximoIdEmpresa++, nome, endereco, donoId);
         empresas.put(empresa.getId(), empresa);
@@ -110,42 +110,55 @@ public class Gerenciamento {
     }
 
     // Editar produto
-    public void editarProduto(int produtoId, String nome, double preco, String categoria) throws Exception {
+    public void editarProduto(int produtoId, String nome, String preco, String categoria) throws Exception {
         Produto produto = produtos.get(produtoId);
-        if (produto == null) throw new Exception("Produto não encontrado.");
+        if (produto == null) throw new Exception("Produto nao cadastrado");
+        if (nome == null || nome.isEmpty()) { throw new Exception("Nome invalido"); }
+        if (preco == null || preco.isEmpty()) { throw new Exception("Valor invalido"); }
+        if (categoria == null || categoria.isEmpty()) { throw new Exception("Categoria invalido"); } //invalidA
         produto.setNome(nome);
-        produto.setValor((float) preco);
+        produto.setValor(preco);
+        produto.setValor(categoria);
     }
 
     // Listar produtos de uma empresa
-    public List<Produto> listarProdutos(int empresaId) throws Exception {
+    public List<String> listarProdutos(int empresaId) throws Exception {
         Empresa empresa = empresas.get(empresaId);
-        if (empresa == null) throw new Exception("Empresa não encontrada.");
-        List<Produto> produtosDaEmpresa = new ArrayList<>();
-        for (Produto produto : produtos.values()) {
-            if (produto.getEmpresa() == empresaId) {
-                produtosDaEmpresa.add(produto);
-            }
+        if (empresa == null) throw new Exception("Empresa nao encontrada");
+
+        List<String> nomesProduto = new ArrayList<>();
+        for (Produto produto : empresa.getProdutos()) {
+            nomesProduto.add(produto.getNome());
         }
-        return produtosDaEmpresa;
+
+        return nomesProduto; // TODO: conferir output
     }
 
     // Criar pedido
     public int criarPedido(int clienteId, int empresaId) throws Exception {
-        Usuario cliente = usuarios.get(clienteId);
         Empresa empresa = empresas.get(empresaId);
-        if (cliente == null || empresa == null) throw new Exception("Cliente ou empresa não encontrados.");
-        Pedido pedido = new Pedido(cliente, empresa);
+        Cliente cliente = (Cliente) usuarios.get(clienteId); //TODO: atenção pra ver se vai dar certo
+
+        if (cliente == null || empresa == null) throw new Exception("Cliente ou empresa nao encontrados");
+
+        String nomeCliente = cliente.getNome();
+        String nomeEmpresa = empresa.getNome();
+
+        Pedido pedido = new Pedido(nomeCliente, nomeEmpresa);
         pedidos.put(pedido.getNumero(), pedido);
+
+        empresa.getClientes().add(cliente);
+        // TODO: empresa deveria ter pedidos???
+
         return pedido.getNumero();
     }
 
     // Adicionar produto ao pedido
-    public void adcionarProduto(int pedidoNumero, int produtoId) throws Exception {
+    public void adicionarProduto(int pedidoNumero, int produtoId) throws Exception {
         Pedido pedido = pedidos.get(pedidoNumero);
         Produto produto = produtos.get(produtoId);
         if (pedido == null || produto == null) throw new Exception("Pedido ou produto não encontrado.");
-        pedido.adicionarProduto(produto, valor);
+        pedido.adicionarProduto(produto);
     }
 
     // Fechar pedido
@@ -163,10 +176,10 @@ public class Gerenciamento {
     }
 
     // Obter número de pedido do cliente na empresa
-    public int getNumeroPedido(Cliente clienteId, Empresa empresa, int indice) throws Exception {
+    public int getNumeroPedido(int idCliente, Empresa empresa, int indice) throws Exception {
         List<Pedido> pedidosCliente = new ArrayList<>();
         for (Pedido pedido : pedidos.values()) {
-            if ((pedido.getCliente() == clienteId) && (pedido.getEmpresa().getChars() == empresa)) {
+            if ((pedido.getCliente().equals("cliente")) && (pedido.getEmpresa().getChars() == empresa)) {
                 pedidosCliente.add(pedido);
             }
         }
@@ -184,7 +197,32 @@ public class Gerenciamento {
         return atributo;
     }
 
-    public void adicionarProduto(int pedidoNumero, int produtoId) {
+    public String getProduto(String nome, int empresaId, String atributo) throws Exception {
+        Empresa empresa = empresas.get(empresaId);
 
+        if (empresa == null) {
+            throw new Exception("Empresa nao existe");
+        }
+
+        if (atributo.equals("empresa")) { // Terceiro caso de teste
+            return empresa.getNome();
+        }
+
+        Produto produto = empresa.getProdutoEspecifico(nome);
+
+        if (produto == null) {
+            return "Produto nao encontrado";
+        }
+
+        if (atributo.equals("categoria")) {
+            return produto.getCategoria();
+        }
+
+        if (atributo.equals("valor")) {
+            return produto.getValor();
+        }
+
+        return "Atributo nao existe";
     }
+
 }

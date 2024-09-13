@@ -1,18 +1,25 @@
 package br.ufal.ic.p2.myfood.modelo;
 
+import java.util.List;
+import br.ufal.ic.p2.myfood.modelo.DonoRestaurante;
+
 public class Empresa {
-    protected int id;
-    protected String nome;
-    protected String endereco;
-    protected String tipoCozinha;
-    protected int donoId;
+    private int id;
+    private String nome;
+    private String endereco;
+    private String tipoCozinha;
+    private List<Produto> produtos;
+    private List<Cliente> clientes;
+    private int donoId;
+    private final String PrefixoEmpresa = "e";
+
 
     public Empresa(int id, String nome, String endereco, int donoId) {
-        this.id = id;
+        this.id = Integer.parseInt(PrefixoEmpresa+ (id));
         this.nome = nome;
         this.endereco = endereco;
         this.tipoCozinha = tipoCozinha;
-        this.donoId = donoId;
+        this.donoId = DonoRestaurante.getId();
     }
 
     public int getId() { return id; }
@@ -23,8 +30,17 @@ public class Empresa {
     public int getDono() {
         return donoId;
     }
-
     public void setDono(int dono) {
         this.donoId = dono;
+    }
+    public List<Produto> getProdutos() { return this.produtos; }
+    public List<Cliente> getClientes() { return this.clientes; }
+    public Produto getProdutoEspecifico(String nome) {
+        for (Produto produto : this.produtos) {
+            if (produto.getNome().equals(nome)) {
+                return produto;
+            }
+        }
+        return null;
     }
 }

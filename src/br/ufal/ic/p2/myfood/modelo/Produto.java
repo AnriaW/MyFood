@@ -4,7 +4,7 @@ public class Produto {
     private int id;
     private Empresa empresa;
     private String nome;
-    private float valor;
+    private String valor;
     private String categoria;
 
 
@@ -33,11 +33,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
