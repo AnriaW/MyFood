@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyFood.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyFood.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/AlterarPedidoFechadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/PedidoNaoAbertoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Dono.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Dono.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Empresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Restaurante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Restaurante.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Exception" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -39,22 +42,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Anton/OneDrive/Área de Trabalho/Myfood_P2-master (1)/Myfood_P2-master",
-    "onboarding.tips.debug.path": "C:/Users/Anton/OneDrive/Área de Trabalho/MyFood/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anton/OneDrive/Área de Trabalho/Myfood_P2-master (1)/Myfood_P2-master&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Anton/OneDrive/Área de Trabalho/MyFood/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="br.ufal.ic.p2.myfood.excessoes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anton\OneDrive\Área de Trabalho\MyFood\src\br\ufal\ic\p2\myfood" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="br.ufal.ic.p2.myfood.excessoes" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

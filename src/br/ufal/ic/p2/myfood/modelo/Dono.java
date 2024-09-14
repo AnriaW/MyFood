@@ -36,7 +36,7 @@ public class Dono extends Usuario{
 
     @Override
     public String getAtributo(String atributo){
-        if (atributo.equals(cpf){
+        if (atributo.equals(cpf)){
             return cpf;
         }
         return super.getAtributo(atributo);

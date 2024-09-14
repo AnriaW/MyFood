@@ -11,6 +11,9 @@ public class Empresa {
     private Dono dono;
     private List<Produto> ListaProdutos;
 
+    public Empresa(){
+    }
+
     public Empresa(String nome, String endereco, Dono dono) {
         this.id = idCounterEmpresa++;
         this.nome = nome;
