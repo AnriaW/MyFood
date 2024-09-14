@@ -1,13 +1,14 @@
 package br.ufal.ic.p2.myfood.modelo;
 
 import java.util.List;
-import br.ufal.ic.p2.myfood.modelo.DonoRestaurante;
+import java.util.ArrayList;
 
 public class Empresa {
+    private static int idCounterEmpresa = 1;
     private int id;
     private String nome;
     private String endereco;
-    private String tipoCozinha;
+    private Dono dono;
     private List<Produto> produtos;
     private List<Cliente> clientes;
     private int donoId;
