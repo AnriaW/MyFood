@@ -2,7 +2,7 @@ package br.ufal.ic.p2.myfood.modelo;
 
 import java.io.Serializable;
 
-public abstract class Usuario implements Serializable{
+public class Usuario implements Serializable{
     private static int idCounterUsuario = 1;
     private int id;
     private String nome;

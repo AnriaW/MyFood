@@ -117,8 +117,8 @@ public class Gerenciamento {
         if (preco == null || preco.isEmpty()) { throw new Exception("Valor invalido"); }
         if (categoria == null || categoria.isEmpty()) { throw new Exception("Categoria invalido"); } //invalidA
         produto.setNome(nome);
-        produto.setValor(preco);
-        produto.setValor(categoria);
+        produto.setValor(produto.getValor());
+        produto.setValor(Float.parseFloat(categoria));
     }
 
     // Listar produtos de uma empresa

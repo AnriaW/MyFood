@@ -35,15 +35,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getValor() {
+    public float getValor(){
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
@@ -53,5 +49,15 @@ public class Produto {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+    public int getIDono(){
+        return IDono;
+    }
+    public void setIDono() {
+        this.IDono = IDono;
+    }
+
+    public String toString(){
+        return nome;
     }
 }

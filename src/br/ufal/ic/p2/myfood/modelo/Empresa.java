@@ -9,39 +9,68 @@ public class Empresa {
     private String nome;
     private String endereco;
     private Dono dono;
-    private List<Produto> produtos;
-    private List<Cliente> clientes;
-    private int donoId;
-    private final String PrefixoEmpresa = "e";
+    private List<Produto> ListaProdutos;
 
-
-    public Empresa(int id, String nome, String endereco, int donoId) {
-        this.id = Integer.parseInt(PrefixoEmpresa+ (id));
+    public Empresa(String nome, String endereco, Dono dono) {
+        this.id = idCounterEmpresa++;
         this.nome = nome;
         this.endereco = endereco;
-        this.tipoCozinha = tipoCozinha;
-        this.donoId = DonoRestaurante.getId();
+        this.dono = dono;
+        ListaProdutos = new ArrayList<>();
     }
 
-    public int getId() { return id; }
-    public String getNome() { return nome; }
-    public String getEndereco() { return endereco; }
-    public String getTipoCozinha() { return tipoCozinha; }
-    public int getDonoId() { return donoId; }
-    public int getDono() {
-        return donoId;
+    public int getId() {
+        return id;
     }
-    public void setDono(int dono) {
-        this.donoId = dono;
+    public void setId(int id){
+        this.id = id;
     }
-    public List<Produto> getProdutos() { return this.produtos; }
-    public List<Cliente> getClientes() { return this.clientes; }
-    public Produto getProdutoEspecifico(String nome) {
-        for (Produto produto : this.produtos) {
-            if (produto.getNome().equals(nome)) {
-                return produto;
-            }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(String endereco){
+        this.endereco= endereco;
+    }
+
+    public Dono getDono() {
+        return dono;
+    }
+    public void setDono(Dono dono){
+        this.dono = dono;
+    }
+
+    public List<Produto> getListaProdutos(){
+        return ListaProdutos;
+    }
+    public void setListaProdutos(List<Produto> ListaProdutos){
+        this.ListaProdutos = ListaProdutos;
+    }
+
+    public void addListaProdutos(Produto produto){
+        this.ListaProdutos.add(produto);
+    }
+
+    public String getAtributo(String atributo) {
+        if (atributo.equals("id")) {
+            return String.valueOf(id);
+        } else if (atributo.equals("nome")) {
+            return nome;
+        } else if (atributo.equals("endereco")) {
+            return endereco;
         }
         return null;
+    }
+
+    @Override
+    public String toString(){
+        return "[" + nome + ", " + endereco + "]";
     }
 }
