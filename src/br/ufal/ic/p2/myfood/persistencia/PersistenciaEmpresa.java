@@ -1,56 +1,69 @@
 package br.ufal.ic.p2.myfood.persistencia;
 
 import br.ufal.ic.p2.myfood.modelo.Empresa;
-import java.beans.XMLEncoder;
-import java.beans.XMLDecoder;
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import br.ufal.ic.p2.myfood.utils.TratarXML;
+import br.ufal.ic.p2.myfood.utils.AuxPersistencia;
 
-public class PersistenciaEmpresa {
+import java.util.List;
+import java.util.ArrayList;
 
-    private static final String CAMINHO_XML = "src/br/ufal/ic/p2/myfood/xml/empresas.xml";
-    private static Map<Integer, Empresa> empresas = new HashMap<>();
+public class PersistenciaEmpresa implements AuxPersistencia<Empresa> {
 
 
-    @SuppressWarnings("unchecked")
-    public static Map<Integer, Empresa> carregarEmpresas() {
-        try (XMLDecoder decoder = new XMLDecoder(new FileInputStream(CAMINHO_XML))) {
-            empresas = (Map<Integer, Empresa>) decoder.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("Ta dando errado... N sei pq");
-            empresas = new HashMap<>();
+    private List<Empresa> listaEmpresas = new ArrayList<>();
+    private TratarXML xml = new TratarXML();
+    private final String file = "src/br/ufal/ic/p2/myfood/xml/usuarios.xml";
+
+    @Override
+    public void iniciar() {
+        listaEmpresas = xml.TirarSerieXML(listaEmpresas, file);
+    }
+
+    @Override
+    public void salvar(Empresa empresa) {
+        listaEmpresas.add(empresa);
+        xml.AdicionarSerieXML(listaEmpresas, file);
+    }
+
+    @Override
+    public void remover(int id) {
+        listaEmpresas.removeIf(empresa -> empresa.getId() == id);
+        xml.AdicionarSerieXML(listaEmpresas, file);
+    }
+
+    @Override
+    public void limpar() {
+        if (listaEmpresas != null) {
+            listaEmpresas.clear();
         }
-        return empresas;
+
+        xml.DeletarDadosNoXML(file);
     }
 
-    public static void salvarEmpresas(Map<Integer, Empresa> empresas) {
-        try (XMLEncoder encoder = new XMLEncoder(new FileOutputStream(CAMINHO_XML))) {
-            encoder.writeObject(empresas);
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Override
+    public void editar(Empresa novo) {
+
+    }
+
+
+    @Override
+    public void atualizar(){
+        xml.AdicionarSerieXML(listaEmpresas, file);
+    }
+
+
+    @Override
+    public Empresa buscar(int id) {
+        for (Empresa empresa : listaEmpresas) {
+            if (empresa.getId() == id) {
+                return empresa;
+            }
         }
+        return null;
     }
 
-    public static void adicionarEmpresa(Empresa empresa) {
-        empresas.put(empresa.getId(), empresa);
-        salvarEmpresas(empresas);
-    }
-
-    public static Empresa obterEmpresa(int id) {
-        return empresas.get(id);
-    }
-
-    public static void removerEmpresa(int id) {
-        empresas.remove(id);
-        salvarEmpresas(empresas);
-    }
-
-    public static Map<Integer, Empresa> getEmpresas() {
-        return empresas;
+    @Override
+    public List<Empresa> listar() {
+        return listaEmpresas;
     }
 }

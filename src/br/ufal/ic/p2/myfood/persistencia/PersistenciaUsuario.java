@@ -1,51 +1,69 @@
 package br.ufal.ic.p2.myfood.persistencia;
 
 import br.ufal.ic.p2.myfood.modelo.Usuario;
-import java.beans.XMLEncoder;
-import java.beans.XMLDecoder;
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import br.ufal.ic.p2.myfood.utils.TratarXML;
+import br.ufal.ic.p2.myfood.utils.AuxPersistencia;
 
-public class PersistenciaUsuario {
+import java.util.List;
+import java.util.ArrayList;
 
-    private static final String CAMINHO_XML = "src/br/ufal/ic/p2/myfood/xml/usuarios.xml";
-    private Map<Integer, Usuario> usuarios = new HashMap<>();
+public class PersistenciaUsuario implements AuxPersistencia<Usuario> {
 
-    public PersistenciaUsuario() {
-        carregar();
+
+    private List<Usuario> listaUsuarios = new ArrayList<>();
+    private TratarXML xml = new TratarXML();
+    private final String file = "src/br/ufal/ic/p2/myfood/xml/usuarios.xml";
+
+    @Override
+    public void iniciar() {
+        listaUsuarios = xml.TirarSerieXML(listaUsuarios, file);
     }
 
-    public void adicionarUsuario(Usuario usuario) {
-        usuarios.put(usuario.getId(), usuario);
-        salvar();
+    @Override
+    public void salvar(Usuario usuario) {
+        listaUsuarios.add(usuario);
+        xml.AdicionarSerieXML(listaUsuarios, file);
     }
 
-    public Usuario obterUsuario(int id) {
-        return usuarios.get(id);
+    @Override
+    public void remover(int id) {
+        listaUsuarios.removeIf(usuario -> usuario.getId() == id);
+        xml.AdicionarSerieXML(listaUsuarios, file);
     }
 
-    public void removerUsuario(int id) {
-        usuarios.remove(id);
-        salvar();
-    }
-
-    public void salvar() {
-        try (XMLEncoder encoder = new XMLEncoder(new FileOutputStream(CAMINHO_XML))) {
-            encoder.writeObject(usuarios);
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Override
+    public void limpar() {
+        if (listaUsuarios != null) {
+            listaUsuarios.clear();
         }
+
+        xml.DeletarDadosNoXML(file);
     }
 
-    @SuppressWarnings("unchecked")
-    public void carregar() {
-        try (XMLDecoder decoder = new XMLDecoder(new FileInputStream(CAMINHO_XML))) {
-            usuarios = (Map<Integer, Usuario>) decoder.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Override
+    public void editar(Usuario novo) {
+
+    }
+
+
+    @Override
+    public void atualizar(){
+        xml.AdicionarSerieXML(listaUsuarios, file);
+    }
+
+    @Override
+    public Usuario buscar(int id) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getId() == id) {
+                return usuario;
+            }
         }
+        //System.out.println("N achou o usuaio... pq?");
+        return null;
+    }
+
+    @Override
+    public List<Usuario> listar() {
+        return listaUsuarios;
     }
 }

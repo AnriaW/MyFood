@@ -1,13 +1,9 @@
 package br.ufal.ic.p2.myfood;
 
-import br.ufal.ic.p2.myfood.Gerenciamento;
+import br.ufal.ic.p2.myfood.excessoes.*;
 
 public class Facade {
-    private Gerenciamento gerenciamento;
-
-    public Facade() {
-        this.gerenciamento = new Gerenciamento();
-    }
+    private final Gerenciamento gerenciamento = new Gerenciamento();
 
     public void zerarSistema() {
         gerenciamento.zerarSistema();
@@ -17,67 +13,84 @@ public class Facade {
         gerenciamento.encerrarSistema();
     }
 
-    public int criarProduto(int empresaId, String nome, float valor, String categoria) throws Exception {
-        return gerenciamento.criarProduto(empresaId, nome, valor, categoria);
-    }
+    // User Story 1
 
-    public void editarProduto(int id, String nome, String valor, String categoria) throws Exception {
-        try {
-            gerenciamento.editarProduto(id, nome, valor, categoria);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public String getProduto(String nome, int empresaId, String atributo) throws Exception {
-        return gerenciamento.getProduto(nome, empresaId, atributo);
-    }
-
-    public String listarProdutos(int empresaId) throws Exception {
-       return gerenciamento.listarProdutos(empresaId).toString();
-    }
-
-    public void criarUsuario(String nome, String email, String senha, String endereco) throws Exception {
-        gerenciamento.criarUsuario(nome, email, senha, endereco);
-    }
-
-    public void criarUsuario(String nome, String email, String senha, String endereco, String cpf) throws Exception {
-        gerenciamento.criarUsuario(nome, email, senha, endereco, cpf);
-    }
-
-    public int login(String email, String senha) throws Exception {
-        return gerenciamento.login(email, senha);
-    }
-
-    public String getAtributoUsuario(int id, String atributo) throws Exception {
+    public String getAtributoUsuario(int id, String atributo) throws UsuarioNaoCadastradoException {
         return gerenciamento.getAtributoUsuario(id, atributo);
     }
 
-    public void criarEmpresa(String nome, String endereco) throws Exception {
-        gerenciamento.criarEmpresa(nome, endereco);
+    public void criarUsuario(String nome, String email, String senha, String endereco) throws EmailInvalidoException, NomeInvalidoException, EnderecoInvalidoException, SenhaInvalidaException, EmailJaCadastradoException {
+        gerenciamento.criarUsuario(nome, email, senha, endereco);
     }
 
-    public String getAtributoEmpresa(int id, String atributo) {
-        return gerenciamento.getAtributoEmpresa(id, atributo);
+    public void criarUsuario(String nome, String email, String senha, String endereco, String cpf) throws EmailInvalidoException, NomeInvalidoException, CPFInvalidoException, EnderecoInvalidoException, SenhaInvalidaException, EmailJaCadastradoException {
+        gerenciamento.criarUsuario(nome, email, senha, endereco, cpf);
     }
 
-    public void criarPedido(int clienteId, int empresaId) throws Exception {
-        gerenciamento.criarPedido(clienteId, empresaId);
+    public int login(String email, String senha) throws UsuarioNaoEncontradoException {
+        return gerenciamento.login(email, senha);
     }
 
-    public void adicionarProduto(int pedidoNumero, int produtoId) throws Exception {
-        gerenciamento.adicionarProduto(pedidoNumero, produtoId);
+    // User Story 2
+
+    public int criarEmpresa(String tipoEmpresa, int dono, String nome, String endereco, String tipoCozinha) throws EmpresaJaExisteException, NomeInvalidoException, EnderecoInvalidoException, UsuarioNaoPodeCriarEmpresaException {
+        return gerenciamento.criarEmpresa(tipoEmpresa, dono, nome, endereco, tipoCozinha);
     }
 
-    public String getPedidos(int numero, String atributo) {
-        return gerenciamento.getPedidos(numero, atributo);
+    public String getEmpresasDoUsuario(int dono) throws UsuarioNaoPodeCriarEmpresaException {
+        return gerenciamento.getEmpresasDoUsuario(dono);
     }
 
-    public void fecharPedido(int numero) throws Exception {
-        gerenciamento.fecharPedido(numero);
+    public String getAtributoEmpresa(int empresa, String atributo) throws AtributoInvalidoException, EmpresaNaoCadastradaException {
+        return gerenciamento.getAtributoEmpresa(empresa, atributo);
     }
 
-    public void removerProduto(int pedidoNumero, String produtoNome) throws Exception {
-        gerenciamento.removerProduto(pedidoNumero, produtoNome);
+    public int getIdEmpresa(int idDono, String nome, int indice) throws  IndiceInvalidoException, NomeInvalidoException, NaoRegistradoException, UsuarioNaoPodeCriarEmpresaException {
+        return gerenciamento.getIdEmpresa(idDono, nome, indice);
     }
+
+    // User Story 3
+
+    public int criarProduto(int id_empresa, String nome, float valor, String categoria) throws NomeInvalidoException, CategoriaInvalidaException, ValorInvalidoException {
+        return gerenciamento.criarProduto(id_empresa, nome, valor, categoria);
+    }
+
+    public void editarProduto(int produto, String nome, float valor, String categoria) throws NomeInvalidoException, CategoriaInvalidaException, ValorInvalidoException {
+        gerenciamento.editarProduto(produto, nome, valor, categoria);
+    }
+
+    public String getProduto(String nome, int empresa, String atributo) throws AtributoInvalidoException, NaoRegistradoException {
+        return gerenciamento.getProduto(nome, empresa, atributo);
+    }
+
+    public String listarProdutos(int empresa) throws NaoRegistradoException {
+        return gerenciamento.listarProdutos(empresa);
+    }
+
+    // User Story 4
+
+    public int criarPedido(int cliente, int empresa) throws PedidoVazioException, UsuarioNaoPodeCriarEmpresaException {
+        return gerenciamento.criarPedido(cliente, empresa);
+    }
+
+    public int getNumeroPedido(int cleinte, int empresa, int indice) {
+        return gerenciamento.getNumeroPedido(cleinte, empresa, indice);
+    }
+
+    public void adicionarProduto(int pedido, int produto) throws NaoRegistradoException, AlterarPedidoFechadoException, PedidoNaoAbertoException {
+        gerenciamento.adicionarProduto(pedido, produto);
+    }
+
+    public String getPedidos(int pedido, String atributo) throws AtributoInvalidoException, NaoRegistradoException {
+        return gerenciamento.getPedidos(pedido, atributo);
+    }
+
+    public void fecharPedido(int pedido) throws NaoRegistradoException, PedidoNaoAbertoException {
+        gerenciamento.fecharPedido(pedido);
+    }
+
+    public void removerProduto(int pedido, String produto) throws AtributoInvalidoException, NaoRegistradoException, AlterarPedidoFechadoException, PedidoNaoAbertoException {
+        gerenciamento.removerProduto(pedido, produto);
+    }
+
 }

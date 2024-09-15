@@ -1,7 +1,7 @@
 package br.ufal.ic.p2.myfood.modelo;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import br.ufal.ic.p2.myfood.excessoes.PedidoNaoAbertoException;
 import br.ufal.ic.p2.myfood.excessoes.AlterarPedidoFechadoException;
 
@@ -17,7 +17,7 @@ public class Pedido {
     public Pedido(){
     }
 
-    public Pedido(String cliente, String empresa) {
+    public Pedido(Usuario cliente, Empresa empresa) {
         this.numero = IdCounterPedido++;
         this.cliente = cliente;
         this.empresa = empresa;
@@ -32,14 +32,14 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public String getCliente() {
+    public Usuario getCliente() {
         return cliente;
     }
     public void setCliente(Usuario cliente) {
         this.cliente = cliente;
     }
 
-    public String getEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
     public void setEmpresa(Empresa empresa) {
@@ -62,7 +62,7 @@ public class Pedido {
         }
     }
 
-    public List<Produto> getProdutos() {
+    public List<Produto> getListaProdutos() {
         return listaProdutos;
     }
     public void setListaProdutos(List<Produto> listaProdutos) {
