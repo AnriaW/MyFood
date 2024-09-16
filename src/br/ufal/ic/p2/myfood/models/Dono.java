@@ -7,7 +7,7 @@ public class Dono extends Usuario {
     private String cpf;
     private List<Empresa> comp_list;
 
-    // O construtor vazio é necessário para a serialização e desserialização
+
     public Dono() {
     }
 
@@ -17,7 +17,6 @@ public class Dono extends Usuario {
         this.comp_list = new ArrayList<Empresa>();
     }
 
-    // Getters e Setters
 
     public String getCpf() {
         return cpf;
@@ -27,11 +26,7 @@ public class Dono extends Usuario {
         this.cpf = cpf;
     }
 
-    /**
-     * Retorna o valor do atributo desejado da classe
-     * @param atributo o nome do atributo desejado
-     * @return Uma 'string' com o valor do atributo desejado
-     */
+   
     @Override
     public String getAtributo(String atributo) {
         if (atributo.equals("cpf")) {
