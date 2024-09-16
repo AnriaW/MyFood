@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa {
-    private static int contador = 1; //Para gerar o id único das Empresas
+    private static int contador = 1; 
     private int id;
     private String nome;
     private String endereco;
     private Dono dono;
     private List<Produto> prod_list;
 
-    // O construtor vazio é necessário para a serialização e desserialização
+  
     public Empresa() {
     }
 
@@ -23,7 +23,7 @@ public class Empresa {
         prod_list = new ArrayList<>();
     }
 
-    // Getters e Setters
+
 
     public int getId() {
         return id;
