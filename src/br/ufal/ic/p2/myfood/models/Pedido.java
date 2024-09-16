@@ -1,4 +1,4 @@
-package br.ufal.ic.p2.myfood.modelo;
+package br.ufal.ic.p2.myfood.models;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -62,10 +62,10 @@ public class Pedido {
         }
     }
 
-    public List<Produto> getListaProdutos() {
+    public List<Produto> getProd_list() {
         return listaProdutos;
     }
-    public void setListaProdutos(List<Produto> listaProdutos) {
+    public void setProd_list(List<Produto> listaProdutos) {
         this.listaProdutos = listaProdutos;
     }
 

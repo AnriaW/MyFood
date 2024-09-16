@@ -2,7 +2,7 @@ package br.ufal.ic.p2.myfood;
 
 import br.ufal.ic.p2.myfood.excessoes.*;
 import br.ufal.ic.p2.myfood.persistencia.*;
-import br.ufal.ic.p2.myfood.modelo.*;
+import br.ufal.ic.p2.myfood.models.*;
 import br.ufal.ic.p2.myfood.utils.*;
 
 import java.util.List;
@@ -22,25 +22,25 @@ public class Gerenciamento {
         persistenciaProduto.iniciar();
         persistenciaPedido.iniciar();
 
-        // Carregar o ArrayList comp_list dos donos
+
         for (Usuario usuario : persistenciaUsuario.listar()) {
             if (usuario instanceof Dono dono) {
                 List<Empresa> companiesOfUser = persistenciaEmpresa.listar()
                         .stream()
-                        .filter(company -> company.getDono().getId() == dono.getId())
+                        .filter(empresa -> empresa.getDono().getId() == dono.getId())
                         .toList();
 
-                dono.setListaEmpresas(companiesOfUser);
+                dono.setComp_list(companiesOfUser);
             }
         }
 
         for (Empresa empresa : persistenciaEmpresa.listar()) {
             List<Produto> produtosDaEmpresa = persistenciaProduto.listar()
                     .stream()
-                    .filter(produto -> produto.getIDono() == empresa.getId())
+                    .filter(produto -> produto.getId_dono() == empresa.getId())
                     .toList();
 
-            empresa.setListaProdutos(produtosDaEmpresa);
+            empresa.setProd_list(produtosDaEmpresa);
         }
    }
 
@@ -169,7 +169,7 @@ public class Gerenciamento {
         }
 
         Dono tempDono = (Dono) persistenciaUsuario.buscar(idDono);
-        return "{" + tempDono.getListaEmpresas().toString() + "}";
+        return "{" + tempDono.getComp_list().toString() + "}";
    }
 
    public String getAtributoEmpresa(int idEmpresa, String atributo) throws EmpresaNaoCadastradaException, AtributoInvalidoException {
@@ -206,7 +206,7 @@ public class Gerenciamento {
 
         List<Empresa> companiesOfUser = persistenciaEmpresa.listar()
                 .stream()
-                .filter(company -> company.getDono().getId() == idDono && company.getNome().equals(nome))
+                .filter(empresa -> empresa.getDono().getId() == idDono && empresa.getNome().equals(nome))
                 .toList();
 
         for (Empresa empresa : companiesOfUser) {
@@ -257,7 +257,7 @@ public class Gerenciamento {
 
         testProductInvalid(nome, valor, categoria);
 
-        for (Produto produto : empresa.getListaProdutos()) {
+        for (Produto produto : empresa.getProd_list()) {
             if (produto.getNome().equals(nome)){
                 throw new ProdutoJaExisteException("Ja existe um produto com esse nome para essa empresa");
             }
@@ -286,7 +286,7 @@ public class Gerenciamento {
 
    public String getProduto(String nome, int idEmpresa, String atributo) throws AtributoInvalidoException, NaoRegistradoException {
         Empresa empresa = persistenciaEmpresa.buscar(idEmpresa);
-        List<Produto> list = empresa.getListaProdutos();
+        List<Produto> list = empresa.getProd_list();
 
         if (atributo == null || atributo.isEmpty()) {
             throw new AtributoInvalidoException("Produto invalido");
@@ -313,7 +313,7 @@ public class Gerenciamento {
             throw new NaoRegistradoException("Empresa nao encontrada");
         }
 
-        return "{" + empresa.getListaProdutos() + "}";
+        return "{" + empresa.getProd_list() + "}";
    }
 
    public int criarPedido(int idCliente, int idEmpresa) throws PedidoVazioException, UsuarioNaoPodeCriarEmpresaException {
@@ -343,7 +343,7 @@ public class Gerenciamento {
             throw new PedidoNaoAbertoException("Nao e possivel adcionar produtos a um pedido fechado");
         }
 
-        List<Produto> prodList = tempPedido.getEmpresa().getListaProdutos();
+        List<Produto> prodList = tempPedido.getEmpresa().getProd_list();
         for (Produto prod : prodList) {
             if (prod.getId() == idProduto) {
                 tempPedido.addListaProdutos(prod);
@@ -378,7 +378,7 @@ public class Gerenciamento {
                 case "cliente" -> tempPedido.getCliente().getNome();
                 case "empresa" -> tempPedido.getEmpresa().getNome();
                 case "estado" -> tempPedido.getEstado();
-                case "produtos" -> "{" + tempPedido.getListaProdutos() + "}";
+                case "produtos" -> "{" + tempPedido.getProd_list() + "}";
                 case "valor" -> String.format(Locale.US, "%.2f", tempPedido.getTotal());
                 default -> throw new AtributoInvalidoException("Atributo nao existe");
             };
@@ -406,7 +406,7 @@ public class Gerenciamento {
             throw new PedidoNaoAbertoException("Nao e possivel remover produtos de um pedido fechado");
         }
 
-        List<Produto> listProd = ped.getListaProdutos();
+        List<Produto> listProd = ped.getProd_list();
         for (Produto prod : listProd) {
             if (prod.getNome().equals(produto)){
                 ped.removerListaProdutos(prod);

@@ -1,4 +1,4 @@
-package br.ufal.ic.p2.myfood.modelo;
+package br.ufal.ic.p2.myfood.models;
 
 public class Restaurante extends Empresa {
     private String tipoCozinha;

@@ -5,42 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/CategoriaInvalidaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/NaoRegistradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/PedidoVazioException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/ProdutoJaExisteException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/ProdutoNaoCadastradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/ValorInvalidoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/AuxPersistencia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/TratarXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Facade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyFood.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyFood.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Gerenciamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Gerenciamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/AtributoInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/AtributoInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/CPFInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/CPFInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmailInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmailInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmailJaCadastradoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmailJaCadastradoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmpresaJaExisteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmpresaJaExisteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmpresaNaoCadastradaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EmpresaNaoCadastradaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EnderecoInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/EnderecoInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/IndiceInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/IndiceInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/LoginOuSenhaInvalidosException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/NomeInvalidoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/NomeInvalidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/SenhaInvalidaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/SenhaInvalidaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/TipoEmpresaInvalidoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoCadastradoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoCadastradoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoPodeCriarEmpresaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/excessoes/UsuarioNaoPodeCriarEmpresaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Dono.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Empresa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Produto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Restaurante.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Usuario.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaEmpresa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaPedido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaProduto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/UsuarioDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/Validador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/AuxPersistencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/AuxPersistencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/TratarXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/TratarXML.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,5 +82,15 @@
       <updated>1724772477466</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

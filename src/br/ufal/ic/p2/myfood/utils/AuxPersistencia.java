@@ -1,7 +1,5 @@
 package br.ufal.ic.p2.myfood.utils;
 
-import br.ufal.ic.p2.myfood.modelo.Usuario;
-
 import java.util.List;
 
 public interface AuxPersistencia<T> {

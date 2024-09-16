@@ -1,4 +1,4 @@
-package br.ufal.ic.p2.myfood.modelo;
+package br.ufal.ic.p2.myfood.models;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -50,10 +50,10 @@ public class Empresa {
         this.dono = dono;
     }
 
-    public List<Produto> getListaProdutos(){
+    public List<Produto> getProd_list(){
         return ListaProdutos;
     }
-    public void setListaProdutos(List<Produto> ListaProdutos){
+    public void setProd_list(List<Produto> ListaProdutos){
         this.ListaProdutos = ListaProdutos;
     }
 

@@ -1,4 +1,4 @@
-package br.ufal.ic.p2.myfood.modelo;
+package br.ufal.ic.p2.myfood.models;
 
 public class Produto {
     private int idCounterProduto = 1;
@@ -6,17 +6,17 @@ public class Produto {
     private String nome;
     private float valor;
     private String categoria;
-    private int IDono;
+    private int Id_dono;
 
     public Produto() {
     }
 
-    public Produto(String nome, float valor, String categoria,int IDono) {
+    public Produto(String nome, float valor, String categoria,int Id_dono) {
         this.id = idCounterProduto++;
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        this.IDono = IDono;
+        this.Id_dono = Id_dono;
     }
 
     public int getId() {
@@ -50,11 +50,11 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    public int getIDono(){
-        return IDono;
+    public int getId_dono(){
+        return Id_dono;
     }
-    public void setIDono() {
-        this.IDono = IDono;
+    public void setId_dono(int Id_dono) {
+        this.Id_dono = Id_dono;
     }
 
     public String toString(){

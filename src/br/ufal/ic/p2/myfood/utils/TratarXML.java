@@ -10,23 +10,42 @@ import java.io.FileOutputStream;
 public class TratarXML {
 
     public void AdicionarSerieXML(Object objeto, String file){
-        FileOutputStream fos = new FileOutputStream(file);
-        XMLEncoder encoder = new XMLEncoder(fos);
-        encoder.writeObject(objeto);
+        try(FileOutputStream fos = new FileOutputStream(file);
+            XMLEncoder encoder = new XMLEncoder(fos)){
+            encoder.writeObject(objeto);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public <T> T TirarSerieXML(T objeto, String file){
         File arquivo = new File(file);
-        FileInputStream fis = new FileInputStream(file);
-        XMLDecoder decoder = new XMLDecoder(fis);
-        objeto = (T) decoder.readObject();
+
+        if(!arquivo.exists()) {
+            return objeto;
+        }
+        else if(arquivo.length() == 0){
+            return objeto;
+        }
+
+        try (FileInputStream fis = new FileInputStream(file);
+             XMLDecoder decoder = new XMLDecoder(fis);) {
+            objeto = (T) decoder.readObject();
+        }
+        catch (IOException e){
+            throw new RuntimeException(e);
+        }
 
         return objeto;
     }
 
     public void DeletarDadosNoXML(String file){
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(new byte[0]);
+        try(FileOutputStream fos = new FileOutputStream(file);){
+            fos.write(new byte[0]);
+        }
+        catch (IOException e){
+            throw new RuntimeException(e);
+        }
     }
 
 }

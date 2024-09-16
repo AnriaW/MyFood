@@ -1,4 +1,4 @@
-package br.ufal.ic.p2.myfood.modelo;
+package br.ufal.ic.p2.myfood.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +23,10 @@ public class Dono extends Usuario{
         this.cpf = cpf;
     }
 
-    public List<Empresa> getListaEmpresas(){
+    public List<Empresa> getComp_list(){
         return ListaEmpresas;
     }
-    public void setListaEmpresas(List<Empresa> ListaEmpresas){
+    public void setComp_list(List<Empresa> ListaEmpresas){
         this.ListaEmpresas = ListaEmpresas;
     }
 

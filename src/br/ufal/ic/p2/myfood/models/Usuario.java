@@ -1,4 +1,4 @@
-package br.ufal.ic.p2.myfood.modelo;
+package br.ufal.ic.p2.myfood.models;
 
 import java.io.Serializable;
 
@@ -59,7 +59,7 @@ public class Usuario implements Serializable{
         return endereco;
     }
 
-    public void setEndereco() {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 

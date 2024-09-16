@@ -1,6 +1,6 @@
 package br.ufal.ic.p2.myfood.persistencia;
 
-import br.ufal.ic.p2.myfood.modelo.Pedido;
+import br.ufal.ic.p2.myfood.models.Pedido;
 import br.ufal.ic.p2.myfood.utils.TratarXML;
 import br.ufal.ic.p2.myfood.utils.AuxPersistencia;
 
