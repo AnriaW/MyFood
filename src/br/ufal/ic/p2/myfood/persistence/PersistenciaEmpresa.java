@@ -12,9 +12,7 @@ public class PersistenciaEmpresa implements Persistencia<Empresa> {
     private TratarXML controle = new TratarXML();
     private final String arquivo = "xml/empresas.xml";
 
-    /**
-     *  Desserializa o arquivo XML da Empresa e guardar na mem�ria
-     */
+
     @Override
     public void iniciar() {
         comp_list = controle.DesserializarXML(comp_list, arquivo);
@@ -34,12 +32,12 @@ public class PersistenciaEmpresa implements Persistencia<Empresa> {
 
     @Override
     public void limpar() {
-        // Limpar a lista de empresas na mem�ria
+     
         if (comp_list != null) {
             comp_list.clear();
         }
 
-        // Limpar a lista de empresas no XML
+      
         controle.ApagarDadosXML(arquivo);
     }
 
