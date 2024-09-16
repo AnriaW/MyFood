@@ -16,4 +16,3 @@ public class Main {
         EasyAccept.main(new String[]{facade, "tests/us4_2.txt"});
     }
 }
-

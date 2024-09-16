@@ -1,31 +1,26 @@
 package br.ufal.ic.p2.myfood.models;
 
 public class Produto {
-    private int idCounterProduto = 1;
+    private static int contador = 1; //Para gerar o id único dos Produtos
     private int id;
     private String nome;
     private float valor;
     private String categoria;
-    private int Id_dono;
+    private int id_dono;
 
+    // O construtor vazio é necessário para a serialização e desserialização
     public Produto() {
     }
 
-    public Produto(String nome, float valor, String categoria,int Id_dono) {
-        this.id = idCounterProduto++;
+    public Produto(String nome, float valor, String categoria, int id_dono) {
+        this.id = contador++;
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        this.Id_dono = Id_dono;
+        this.id_dono = id_dono;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public int setId(int id) {
-        return this.id = id;
-    }
+    // Getters e Setters
 
     public String getNome() {
         return nome;
@@ -35,7 +30,7 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getValor(){
+    public float getValor() {
         return valor;
     }
 
@@ -50,14 +45,24 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    public int getId_dono(){
-        return Id_dono;
+
+    public int getId() {
+        return id;
     }
-    public void setId_dono(int Id_dono) {
-        this.Id_dono = Id_dono;
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String toString(){
         return nome;
+    }
+
+    public int getId_dono() {
+        return id_dono;
+    }
+
+    public void setId_dono(int id_dono) {
+        this.id_dono = id_dono;
     }
 }

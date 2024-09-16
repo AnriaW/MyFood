@@ -1,40 +1,44 @@
 package br.ufal.ic.p2.myfood.models;
 
-import java.util.List;
+import br.ufal.ic.p2.myfood.exceptions.UnregisteredException;
+
 import java.util.ArrayList;
-import br.ufal.ic.p2.myfood.excessoes.PedidoNaoAbertoException;
-import br.ufal.ic.p2.myfood.excessoes.AlterarPedidoFechadoException;
+import java.util.List;
 
 public class Pedido {
-    private static int IdCounterPedido = 1; // Gera o nÃºmero Ãºnico do pedido
+    private static int contador = 1; //Para gerar o id único dos Pedidos
     private int numero;
     private Usuario cliente;
     private Empresa empresa;
     private String estado;
-    private List<Produto> listaProdutos  = new ArrayList<>();
-    private float total;
+    private List<Produto> prod_list = new ArrayList<>();
+    private float valor_total;
 
-    public Pedido(){
+    // O construtor vazio é necessário para a serialização e desserialização
+    public Pedido () {
     }
 
-    public Pedido(Usuario cliente, Empresa empresa) {
-        this.numero = IdCounterPedido++;
+    public Pedido (Usuario cliente, Empresa empresa) {
+        this.numero = contador++;
         this.cliente = cliente;
         this.empresa = empresa;
         this.estado = "aberto";
     }
 
     // Getters e Setters
+
     public int getNumero() {
         return numero;
     }
-    public void setNumero(int numero){
+
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
     public Usuario getCliente() {
         return cliente;
     }
+
     public void setCliente(Usuario cliente) {
         this.cliente = cliente;
     }
@@ -42,6 +46,7 @@ public class Pedido {
     public Empresa getEmpresa() {
         return empresa;
     }
+
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
@@ -49,54 +54,61 @@ public class Pedido {
     public String getEstado() {
         return estado;
     }
+
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public void changeEstado() throws PedidoNaoAbertoException {
+    /**
+     * Muda o estado do pedido de 'aberto' para 'fechado'
+     * @throws UnregisteredException Retorna erro caso o pedido não exista ou não esteja aberto
+     */
+    public void changeEstado() throws UnregisteredException {
         if (this.estado.equals("aberto")){
             this.estado = "preparando";
         }
-        else{
-            throw new PedidoNaoAbertoException("Este pedido nao esta aberto");
+        else {
+            throw new UnregisteredException("Este pedido nao esta aberto");
         }
     }
 
     public List<Produto> getProd_list() {
-        return listaProdutos;
-    }
-    public void setProd_list(List<Produto> listaProdutos) {
-        this.listaProdutos = listaProdutos;
+        return prod_list;
     }
 
-    public float getTotal() {
-        return total;
+    public void setProd_list(List<Produto> prod_list) {
+        this.prod_list = prod_list;
     }
 
-    public void setTotal(float total){
-        this.total = total;
+    public float getValor_total() {
+        return valor_total;
     }
 
-    public void addListaProdutos(Produto produto) throws AlterarPedidoFechadoException {
-        if (estado.equals("preparando")) {
-            throw new AlterarPedidoFechadoException("Nao se pode adicionar no pedido fechado");
-        }
-
-        listaProdutos.add(produto);
-        this.total+=produto.getValor();
+    public void setValor_total(float valor_total) {
+        this.valor_total = valor_total;
     }
-    public void removerListaProdutos(Produto produto) throws AlterarPedidoFechadoException {
-        if(estado.equals("preparando")) {
-            throw new AlterarPedidoFechadoException("Nao se pode remover do pedido fechado");
-        }
-        if (listaProdutos.remove(produto)) {
-            total -= produto.getValor();
+
+    /**
+     * Adiciona um produto no prod_list e soma o valor no total da compra
+     * @param produto O produto que deseja adicionar
+     */
+    public void addProductToList(Produto produto) {
+        prod_list.add(produto);
+        this.valor_total += produto.getValor();
+    }
+
+    /**
+     * Remove um produto do prod_list e subtrai o valor no total da compra
+     * @param produto O produto que deseja remover
+     */
+    public void removeProductFromList(Produto produto) {
+        if (prod_list.remove(produto)){
+            this.valor_total -= produto.getValor();
         }
     }
 
     public String toString(){
-        return "id = " + numero + ", Cliente" + cliente.getNome() + ", Empresa = " + empresa.getNome() + ", Estado = " + estado + "\n"
-                + "Produtos de pedido: \n" + listaProdutos + "\n\n";
+        return "id = " + numero + ", Cliente = " + cliente.getNome() + ", Empresa = " + empresa.getNome() + ", Estado = " + estado + "\n"
+                + "Produtos de pedido:\n" + prod_list + "\n\n";
     }
-
 }

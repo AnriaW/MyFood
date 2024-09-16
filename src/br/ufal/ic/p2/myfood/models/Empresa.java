@@ -1,79 +1,85 @@
 package br.ufal.ic.p2.myfood.models;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Empresa {
-    private static int idCounterEmpresa = 1;
+    private static int contador = 1; //Para gerar o id único das Empresas
     private int id;
     private String nome;
     private String endereco;
     private Dono dono;
-    private List<Produto> ListaProdutos;
+    private List<Produto> prod_list;
 
-    public Empresa(){
+    // O construtor vazio é necessário para a serialização e desserialização
+    public Empresa() {
     }
 
     public Empresa(String nome, String endereco, Dono dono) {
-        this.id = idCounterEmpresa++;
+        this.id = contador++;
         this.nome = nome;
         this.endereco = endereco;
         this.dono = dono;
-        ListaProdutos = new ArrayList<>();
+        prod_list = new ArrayList<>();
     }
+
+    // Getters e Setters
 
     public int getId() {
         return id;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome){
+
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
     public String getEndereco() {
         return endereco;
     }
-    public void setEndereco(String endereco){
-        this.endereco= endereco;
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public Dono getDono() {
         return dono;
     }
-    public void setDono(Dono dono){
+
+    public void setDono(Dono dono) {
         this.dono = dono;
     }
 
-    public List<Produto> getProd_list(){
-        return ListaProdutos;
-    }
-    public void setProd_list(List<Produto> ListaProdutos){
-        this.ListaProdutos = ListaProdutos;
-    }
-
-    public void addListaProdutos(Produto produto){
-        this.ListaProdutos.add(produto);
-    }
-
     public String getAtributo(String atributo) {
-        if (atributo.equals("id")) {
-            return String.valueOf(id);
-        } else if (atributo.equals("nome")) {
-            return nome;
-        } else if (atributo.equals("endereco")) {
-            return endereco;
-        }
-        return null;
+        return switch (atributo) {
+            case "id" -> String.valueOf(id);
+            case "nome" -> nome;
+            case "endereco" -> endereco;
+            default -> null;
+        };
+    }
+
+    public List<Produto> getProd_list() {
+        return prod_list;
+    }
+
+    public void setProd_list(List<Produto> prod_list) {
+        this.prod_list = prod_list;
+    }
+
+    public void addProd_list(Produto produto){
+        this.prod_list.add(produto);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "[" + nome + ", " + endereco + "]";
     }
 }

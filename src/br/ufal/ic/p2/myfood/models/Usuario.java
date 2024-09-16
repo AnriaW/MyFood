@@ -2,26 +2,27 @@ package br.ufal.ic.p2.myfood.models;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable{
-    private static int idCounterUsuario = 1;
+public class Usuario implements Serializable {
+    private static int contador = 1; //Para gerar o id único dos Usuários
     private int id;
     private String nome;
     private String email;
     private String senha;
     private String endereco;
 
-
-    public Usuario(){
-        //Para serializar (lembrar disso no futuro)
+    // O construtor vazio é necessário para a serialização e desserialização
+    public Usuario() {
     }
 
     public Usuario(String nome, String email, String senha, String endereco) {
-        this.id = idCounterUsuario++;
+        this.id = contador++;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.endereco = endereco;
     }
+
+    // Getters e Setters
 
     public int getId() {
         return id;
@@ -63,24 +64,24 @@ public class Usuario implements Serializable{
         this.endereco = endereco;
     }
 
-    // Metodo para obter qual o tipo de atributo
+    /**
+     * Retorna o valor do atributo desejado da classe
+     * @param atributo o nome do atributo desejado
+     * @return Uma 'string' com o valor do atributo desejado
+     */
     public String getAtributo(String atributo) {
-        if (atributo.equals("id")) {
-            return String.valueOf(id);
-        } else if (atributo.equals("nome")) {
-            return nome;
-        } else if (atributo.equals("email")) {
-            return email;
-        } else if (atributo.equals("senha")) {
-            return senha;
-        } else if (atributo.equals("endereco")) {
-            return endereco;
-        }
-        return null; // Adicionei um retorno padrÃ£o caso o atributo nÃ£o seja encontrado
+        return switch (atributo) {
+            case "id" -> String.valueOf(id);
+            case "nome" -> nome;
+            case "email" -> email;
+            case "senha" -> senha;
+            case "endereco" -> endereco;
+            default -> null;
+        };
     }
 
     @Override
-    public String toString(){
-        return "Usuario [id="+id+", nome="+nome+", email="+email+", senha="+senha+", endereco="+endereco+"]";
+    public String toString() {
+        return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + " senha=" + senha + "  endereço=" + endereco + "]";
     }
 }
