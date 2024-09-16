@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fa0782-a7a3-4fbe-947c-92680afa6d57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyFood.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyFood.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Gerenciamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/Gerenciamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Dono.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Empresa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Pedido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Produto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Restaurante.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/modelo/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaEmpresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaPedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/persistencia/PersistenciaUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/AuxPersistencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/AuxPersistencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/TratarXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufal/ic/p2/myfood/utils/TratarXML.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
