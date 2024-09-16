@@ -33,7 +33,6 @@ public class Gerenciamento {
             }
         }
 
-        // Carregar o ArrayList prod_list das empresas
         for (Empresa comp : persistenciaEmpresa.listar()) {
             List<Produto> productsOfComp = persistenciaProduto.listar()
                     .stream()
@@ -244,10 +243,10 @@ public class Gerenciamento {
     public static int getIndexByNome(List<Empresa> empresas, String nome) {
         for (int i = 0; i < empresas.size(); i++) {
             if (empresas.get(i).getNome().equals(nome)) {
-                return i;  // Retorna o �ndice da primeira ocorr�ncia
+                return i;  
             }
         }
-        return -1;  // Retorna -1 se n�o encontrar
+        return -1;  
     }
 
 
