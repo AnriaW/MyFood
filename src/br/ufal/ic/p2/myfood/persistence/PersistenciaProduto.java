@@ -12,9 +12,7 @@ public class PersistenciaProduto implements Persistencia<Produto> {
     private TratarXML controle = new TratarXML();
     private final String arquivo = "xml/produtos.xml";
 
-    /**
-     *  Desserializa o arquivo XML do Produto e guardar na mem�ria
-     */
+
     @Override
     public void iniciar() {
         prod_list = controle.DesserializarXML(prod_list, arquivo);
@@ -40,10 +38,7 @@ public class PersistenciaProduto implements Persistencia<Produto> {
         controle.ApagarDadosXML(arquivo);
     }
 
-    /**
-     * Localiza o produto a ser editado e o substitui pelo novo_produto.
-     * @param novo_produto Um objeto da classe Produto com as informa��es editadas
-     */
+
     @Override
     public void editar(Produto novo_produto) {
         for (int i = 0; i < prod_list.size(); i++) {
